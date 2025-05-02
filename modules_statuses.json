@@ -1,0 +1,9 @@
+{
+    "Auth": true,
+    "Dashboard": true,
+    "Profile": true,
+    "Socialite": true,
+    "Settings": true,
+    "Setting": true,
+    "Client": true
+}
