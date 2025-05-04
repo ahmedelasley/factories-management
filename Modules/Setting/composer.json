@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/settings",
+    "name": "nwidart/setting",
     "description": "",
     "authors": [
         {
@@ -17,14 +17,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Settings\\": "app/",
-            "Modules\\Settings\\Database\\Factories\\": "database/factories/",
-            "Modules\\Settings\\Database\\Seeders\\": "database/seeders/"
+            "Modules\\Setting\\": "app/",
+            "Modules\\Setting\\Database\\Factories\\": "database/factories/",
+            "Modules\\Setting\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\Settings\\Tests\\": "tests/"
+            "Modules\\Setting\\Tests\\": "tests/"
         }
     }
 }

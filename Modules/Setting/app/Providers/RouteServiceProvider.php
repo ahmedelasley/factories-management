@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Providers;
+namespace Modules\Setting\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +8,7 @@ use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected string $name = 'Settings';
+    protected string $name = 'Setting';
 
     /**
      * Called before routes are registered.

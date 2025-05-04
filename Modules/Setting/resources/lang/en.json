@@ -1,0 +1,12 @@
+{
+    "general"            : "General Settings",
+    "system"             : "System Settings",
+    "user"               : "User Settings",
+    "role"               : "Roles",
+    "permission"         : "Permissions",
+    "module"             : "Modules",
+    "appearance"         : "Appearance",
+    "language & Region"  : "Language & Region",
+    "notification"       : "Notifications",
+    "custom"             : "Custom Settings"
+  }

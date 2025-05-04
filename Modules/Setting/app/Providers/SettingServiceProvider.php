@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Settings\Providers;
+namespace Modules\Setting\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -8,13 +8,13 @@ use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-class SettingsServiceProvider extends ServiceProvider
+class SettingServiceProvider extends ServiceProvider
 {
     use PathNamespace;
 
-    protected string $name = 'Settings';
+    protected string $name = 'Setting';
 
-    protected string $nameLower = 'settings';
+    protected string $nameLower = 'setting';
 
     /**
      * Boot the application events.
@@ -27,6 +27,8 @@ class SettingsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->loadJsonTranslationsFrom(module_path('Setting', 'Resources/lang'));
+        
     }
 
     /**

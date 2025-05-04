@@ -1,16 +1,18 @@
 <?php
 
-namespace Modules\Settings\Http\Controllers;
+namespace Modules\Setting\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\Settings\Entities\Setting;
-class SettingsController extends Controller
+use Modules\Setting\Models\Setting;
+
+use Modules\Setting\Enums\SettingType;
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // $settings = Setting::all();
         // $settings = Setting::where('type', 0)->get();
@@ -20,8 +22,23 @@ class SettingsController extends Controller
         // $settings = Setting::where('type', 0)->where('status', 1)->orderBy('key')->simplePaginate(10);
         // $settings = Setting::where('type', 0)->where('status', 1)->orderBy('key')->cursorPaginate(10);
         // $settings = Setting::where('type', 0)->where('status', 1)->orderBy('key')->get();
-        $settings = Setting::where('type', 0)->where('status', 1)->orderBy('id')->get();
-        return view('settings::index', compact('settings'));
+        // $settings = Setting::where('type', 0)->where('status', 1)->orderBy('id')->get();
+        // return view('setting::index', compact('settings'));
+
+
+                // كل الأنواع
+                $types = SettingType::cases();
+
+                // النوع الحالي من الـ query string أو الافتراضي
+                $current = $request->query('type')
+                    ? SettingType::from($request->query('type'))
+                    : $types[0];
+        
+                // جلب الإعدادات الخاصة بالنوع الحالي
+                $settings = Setting::type($current)->get();
+        
+                return view('setting::index', compact('types', 'current', 'settings'));
+
 
     }
 
@@ -30,7 +47,7 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        return view('settings::create');
+        return view('setting::create');
     }
 
     /**
@@ -43,7 +60,7 @@ class SettingsController extends Controller
      */
     public function show($id)
     {
-        return view('settings::show');
+        return view('setting::show');
     }
 
     /**
@@ -51,7 +68,7 @@ class SettingsController extends Controller
      */
     public function edit($id)
     {
-        return view('settings::edit');
+        return view('setting::edit');
     }
 
     /**

@@ -21,9 +21,8 @@
         </div>
         <ul class="side-menu">
 
-            <x-slides.slide :value="__(key: 'Main')"/>
-            <x-slides.slide :value="__(key: 'Dashboard')"  :route="route('dashboard')" />
-            <x-slides.slide :value="__(key: 'Settings')"  :route="route('settings.index')" />
+            @include('dashboard::layouts.partials.menu')
+            @include('setting::layouts.partials.menu')
 
             {{-- <x-slides.slide-menu :value="__(key: 'Charts')">
                 <x-slides.slide-item :value="__(key: 'Morris Charts')" :route="route('dashboard')" />
