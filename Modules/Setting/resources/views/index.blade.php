@@ -9,7 +9,8 @@
 
 
 @section('content')
-<div class="row">
+
+<div class="row" x-data="{ settingTab: '{{ $current }}' }">
     <div class="col-lg-4 col-xl-3">
         <div class="card">
             <div class="card-header">
@@ -19,14 +20,20 @@
                 <div class="main-settings-menu">
                     <nav class="nav main-nav-column">
                         @foreach(\Modules\Setting\Enums\SettingType::cases() as $type)
-                            <a class="nav-link thumb mb-2 {{ $current === $type ? 'active' : 'border-top-0' }}"
+                            {{-- <a class="nav-link thumb mb-2 {{ $current === $type ? 'active' : 'border-top-0' }}"
                             id="tab-{{ $type->value }}-tab"
                             data-bs-toggle="pill"
                             href="#tab-{{ $type->value }}"
                             role="tab"
                             aria-controls="tab-{{ $type->value }}"
                             aria-selected="{{ $current === $type ? 'true' : 'false' }}"
+                            ><i class="{{ $type->icon() }}"></i> {{ $type->label() }} </a> --}}
+
+
+                            <a class="nav-link thumb mb-2"
+                                href="javascript:void(0);" :class="{'active' : settingTab === '{{$type}}' }" @click.prevent="settingTab = '{{$type}}'"
                             ><i class="{{ $type->icon() }}"></i> {{ $type->label() }} </a>
+
                         @endforeach
                     </nav>
                 </div>
@@ -43,7 +50,7 @@
         <div class="row">
                 
             @foreach ($settings as $key => $value)
-                <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 p-2">
+                <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 p-2"  x-show="settingTab === '{{ $value['type'] }}' ">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -67,12 +74,20 @@
                             </div>
                         </div>
                         <div class="card-footer p-3 d-flex justify-content-between">
-                            <a href="javascript:void(0);" class="fs-14 mb-0 text-primary">Go to Settings</a>
-                            {{-- <label class="form-switch float-end mb-0">
-                                <a href="javascript:void(0);" class="fs-14 mb-0 me-2 text-primary">Restore default</a>
-                                <input type="checkbox" name="form-switch-checkbox3" class="form-switch-input">
-                                <span class="form-switch-indicator custom-radius"></span>
-                            </label> --}}
+                            <a href="javascript:void(0);" class="fs-14 mb-0 text-primary">Restore {{ $value['status'] }}</a>
+                            {{-- <div class="check-box">
+                                <input 
+                                  type="checkbox" 
+                                  name="active" 
+                                  {{ $value['status']->isActive() ? 'checked' : '' }}
+                                >
+                            </div> --}}
+                            @livewire('setting::setting.toggle-status', ['setting' => $value, key('toggle-'.$value['id'])])
+
+
+                            {{-- <livewire:setting::setting.toggle-status 
+                                :setting="$value"
+                                /> --}}
                         </div>
                     </div>
                 </div>

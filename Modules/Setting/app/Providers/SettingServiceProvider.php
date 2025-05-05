@@ -8,6 +8,9 @@ use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
+use Livewire\Livewire;
+use Modules\Setting\Livewire\Setting\ToggleStatus;
+
 class SettingServiceProvider extends ServiceProvider
 {
     use PathNamespace;
@@ -28,7 +31,13 @@ class SettingServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
         $this->loadJsonTranslationsFrom(module_path('Setting', 'Resources/lang'));
-        
+
+                // تسجيل مكوّن Livewire
+                Livewire::component(
+                    'setting::setting.toggle-status',
+                    ToggleStatus::class
+                );
+
     }
 
     /**
