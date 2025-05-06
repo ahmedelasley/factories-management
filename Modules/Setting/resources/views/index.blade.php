@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="row">
-                
+
             @foreach ($settings as $setting)
                 <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 p-2"  x-show="settingTab === '{{ $setting['type'] }}' ">
                     <div class="card">
@@ -56,22 +56,22 @@
                             <div class="row">
                                 @livewire('setting::setting.edit', ['setting' => $setting, key('toggle-'.$setting['id'])])
 
-                                
+
                             </div>
                         </div>
                         <div class="card-footer p-3 d-flex justify-content-between">
                             <a href="javascript:void(0);" class="fs-14 mb-0 text-primary">Restore {{ $setting['status'] }}</a>
                             {{-- <div class="check-box">
-                                <input 
-                                  type="checkbox" 
-                                  name="active" 
+                                <input
+                                  type="checkbox"
+                                  name="active"
                                   {{ $value['status']->isActive() ? 'checked' : '' }}
                                 >
                             </div> --}}
                             @livewire('setting::setting.toggle-status', ['setting' => $setting, key('toggle-'.$setting['id'])])
 
 
-                            {{-- <livewire:setting::setting.toggle-status 
+                            {{-- <livewire:setting::setting.toggle-status
                                 :setting="$value"
                                 /> --}}
                         </div>

@@ -56,22 +56,6 @@
         <!-- SweetAlert2 Script -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- Listen for Livewire alert events -->
-        {{-- <script>
-            window.addEventListener('alert', event => {
-                Swal.fire({
-                    icon: event.detail.type ?? 'info',
-                    title: event.detail.message ?? 'Alert',
-                    toast: true,
-                    timer: 3000,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                });
-            });
-        </script> --}}
-        @include('sweetalert::alert')
-
-        
     </body>
     <!--end::Body-->
 </html>

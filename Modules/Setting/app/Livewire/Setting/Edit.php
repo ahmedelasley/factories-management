@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\DB;
 use Modules\Setting\Models\Setting;
 use Modules\Setting\Services\SettingValidationService;
 
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class Edit extends Component
 {
 
     public Setting $setting;
-    public string $value = '';
+    public string $value;
 
     public function mount(Setting $setting): void
     {
@@ -21,11 +22,11 @@ class Edit extends Component
     }
 
     // Real Time Validation
-    protected function rules(): array 
+    protected function rules(): array
     {
         return app(SettingValidationService::class)->rules($this->setting->data_type->value);
-    } 
- 
+    }
+
     public function updated($field): void
     {
         $this->validateOnly($field);
@@ -38,17 +39,15 @@ class Edit extends Component
         try {
             $validated = $this->validate();
             $validated['value'] = $this->value;
-            // $validated['updater_id'] = Auth::id();
-            // $validated['updater_type'] = Auth::user()::class;
-
             $this->setting->update($validated);
 
             DB::commit();
 
-            $this->dispatch('alert', [
-                'type' => 'success',
-                'message' => __('setting.updated_successfully'),
-            ]);
+            LivewireAlert::title('Success')
+            ->text('Operation completed successfully.')
+            ->success()
+            ->show();
+
         } catch (\Throwable $e) {
             DB::rollBack();
 

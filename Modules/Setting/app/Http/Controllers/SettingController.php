@@ -33,10 +33,10 @@ class SettingController extends Controller
                 $current = $request->query('type')
                     ? SettingType::from($request->query('type'))
                     : $types[0];
-        
+
                 // جلب الإعدادات الخاصة بالنوع الحالي
-                $settings = Setting::type($current)->get();
-        
+                $settings = Setting::get();
+
                 return view('setting::index', compact('types', 'current', 'settings'));
 
 
