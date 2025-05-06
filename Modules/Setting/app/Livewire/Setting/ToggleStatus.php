@@ -12,21 +12,20 @@ class ToggleStatus extends Component
     public $setting;
     public $status;
 
-    // public function mount()
-    // {
-    //     dd($this->Status);
-    // }
-
-
     public function toggleStatus()
     {
-        dd($this->Status);
-        $this->setting->status = $status === SettingStatus::ACTIVE
-            ? SettingStatus::INACTIVE
-            : SettingStatus::ACTIVE;
-        $this->setting->save();
-    }
+        $this->status = $this->setting->status == SettingStatus::ACTIVE ? SettingStatus::INACTIVE : SettingStatus::ACTIVE;
 
+        $this->setting->update([
+            'status' => $this->status,
+        ]);
+
+        $this->dispatch('alert', [
+            'type' => 'success',
+            'message' => 'Product created successfully!'
+        ]);
+    
+    }
     /**
      * Render the Livewire view.
      *

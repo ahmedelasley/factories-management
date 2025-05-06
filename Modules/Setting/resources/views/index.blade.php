@@ -49,32 +49,18 @@
         </div>
         <div class="row">
                 
-            @foreach ($settings as $key => $value)
-                <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 p-2"  x-show="settingTab === '{{ $value['type'] }}' ">
+            @foreach ($settings as $setting)
+                <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 p-2"  x-show="settingTab === '{{ $setting['type'] }}' ">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="d-flex justify-content-start">
-                                        <div class="mr-3 btn-icon rounded-50 bg-gray-100 p-4 text-primary">{!! $value['icon'] !!}</div>
-                                        <div class="d-flex flex-column  w-100">
-                                            <p class="fs-20 fw-medium d-flex mb-0">{{ $value['key'] }}</p>
-                                            <div class=" my-2">
-                                                <form action="{{ route('settings.update', $value['id']) }}" class="d-flex justify-content-between " method="post">
-                                                    <input type="{{ $value->data_type->inputType() }}" name="" class="form-control" value="{{ $value['key'] }}" placeholder="{{ $value['description'] }}">
-                                                    <button class="btn btn-primary mx-2" type="button" id="button-addon2"><i class="fa fa-save"></i></button>
-                                                </form>
-                                            </div><!-- input-group -->
-                                            <div>
-                                                <p class="fs-13 text-muted mb-0">{{ $value['description'] }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @livewire('setting::setting.edit', ['setting' => $setting, key('toggle-'.$setting['id'])])
+
+                                
                             </div>
                         </div>
                         <div class="card-footer p-3 d-flex justify-content-between">
-                            <a href="javascript:void(0);" class="fs-14 mb-0 text-primary">Restore {{ $value['status'] }}</a>
+                            <a href="javascript:void(0);" class="fs-14 mb-0 text-primary">Restore {{ $setting['status'] }}</a>
                             {{-- <div class="check-box">
                                 <input 
                                   type="checkbox" 
@@ -82,7 +68,7 @@
                                   {{ $value['status']->isActive() ? 'checked' : '' }}
                                 >
                             </div> --}}
-                            @livewire('setting::setting.toggle-status', ['setting' => $value, key('toggle-'.$value['id'])])
+                            @livewire('setting::setting.toggle-status', ['setting' => $setting, key('toggle-'.$setting['id'])])
 
 
                             {{-- <livewire:setting::setting.toggle-status 
@@ -95,4 +81,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+
 @endsection

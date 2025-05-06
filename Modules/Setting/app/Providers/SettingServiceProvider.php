@@ -7,7 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-
+use Modules\Setting\Models\Setting;
+use Modules\Setting\Observers\SettingObserver;
 use Livewire\Livewire;
 use Modules\Setting\Livewire\Setting\ToggleStatus;
 
@@ -38,6 +39,7 @@ class SettingServiceProvider extends ServiceProvider
                     ToggleStatus::class
                 );
 
+                Setting::observe(SettingObserver::class);
     }
 
     /**

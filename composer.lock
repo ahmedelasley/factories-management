@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afe197e7ec9ff7ae277cc57b6c467850",
+    "content-hash": "23904d59e97c55421c8d55bddf9133d7",
     "packages": [
         {
             "name": "brick/math",
@@ -1116,6 +1116,70 @@
                 }
             ],
             "time": "2025-02-03T10:55:03+00:00"
+        },
+        {
+            "name": "jantinnerezo/livewire-alert",
+            "version": "4.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jantinnerezo/livewire-alert.git",
+                "reference": "4bab76cba849da2f783c82103edb37165e646897"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/4bab76cba849da2f783c82103edb37165e646897",
+                "reference": "4bab76cba849da2f783c82103edb37165e646897",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "livewire/livewire": "^3.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.70",
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^9.5|^10.0|^11.5.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LivewireAlert": "Jantinnerezo\\LivewireAlert\\LivewireAlert"
+                    },
+                    "providers": [
+                        "Jantinnerezo\\LivewireAlert\\LivewireAlertServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jantinnerezo\\LivewireAlert\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jantinn Erezo",
+                    "email": "erezojantinn@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides a simple alert utilities for your livewire components.",
+            "homepage": "https://github.com/jantinnerezo/livewire-alert",
+            "keywords": [
+                "jantinnerezo",
+                "livewire-alert"
+            ],
+            "support": {
+                "issues": "https://github.com/jantinnerezo/livewire-alert/issues",
+                "source": "https://github.com/jantinnerezo/livewire-alert/tree/4.0.5"
+            },
+            "time": "2025-04-21T10:09:52+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4028,6 +4092,96 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "realrashid/sweet-alert",
+            "version": "v7.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/realrashid/sweet-alert.git",
+                "reference": "d54b1663970da8d416eb09e8719a8561a45fb2d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/d54b1663970da8d416eb09e8719a8561a45fb2d9",
+                "reference": "d54b1663970da8d416eb09e8719a8561a45fb2d9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.6|^6.0|^7.0|^8.0|^9.0|^9.11|9.14.*|^10.0|^11.0|^12.0",
+                "php": "^7.2|^8.0|^8.1|^8.2|^8.3"
+            },
+            "require-dev": {
+                "symfony/thanks": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
+                    },
+                    "providers": [
+                        "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "RealRashid\\SweetAlert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rashid Ali",
+                    "email": "realrashid05@gmail.com",
+                    "homepage": "https://realrashid.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Sweet Alert Is A Package For Laravel Provides An Easy Way To Display Alert Messages Using The SweetAlert2 Library.",
+            "homepage": "https://github.com/realrashid/sweet-alert",
+            "keywords": [
+                "alert",
+                "laravel",
+                "laravel-package",
+                "notifier",
+                "noty",
+                "sweet-alert",
+                "sweet-alert2",
+                "toast"
+            ],
+            "support": {
+                "docs": "https://realrashid.github.io/sweet-alert/",
+                "email": "realrashid05@gmail.com",
+                "issues": "https://github.com/realrashid/sweet-alert/issues",
+                "source": "https://github.com/realrashid/sweet-alert"
+            },
+            "funding": [
+                {
+                    "url": "https://ko-fi.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.buymeacoffee.com/realrashid",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://issuehunt.io/r/realrashid",
+                    "type": "issuehunt"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/realrashid/sweet-alert",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-02-25T21:11:49+00:00"
         },
         {
             "name": "symfony/clock",

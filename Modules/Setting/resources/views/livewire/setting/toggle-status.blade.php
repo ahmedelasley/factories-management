@@ -44,8 +44,8 @@
       <input
         type="checkbox"
         id="toggle-{{ $setting->id }}"
-        wire:model="isStatus"
-        {{-- wire:click="toggleStatus('{{ $setting->status }}')" --}}
+        {{-- wire:model="isStatus" --}}
+        wire:change="toggleStatus()"
         {{-- wire:loading.attr="disabled" --}}
         {{ $setting->status->isActive() ? 'checked' : '' }}
       />
