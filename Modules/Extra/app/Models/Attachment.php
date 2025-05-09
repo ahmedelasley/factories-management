@@ -1,0 +1,61 @@
+<?php
+
+namespace Modules\Extra\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Modules\Extra\Database\Factories\AttachmentFactory;
+use Illuminate\Support\Str;
+
+class Attachment extends Model
+{
+    use HasFactory;
+
+    public $incrementing = false;
+    protected $keyType = 'string'; // UUID is stored as string
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [
+        'id', 'file_name', 'file_path', 'file_size', 'file_type',
+        'attachable_id', 'attachable_type',
+        'creator_id', 'creator_type',
+        'updater_id', 'updater_type',
+        'description', 'status'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Automatically generate a UUID for the model when it is created
+        static::creating(function ($model) {
+            if (empty($model->id)) {
+                $model->id = (string) Str::uuid();
+            }
+        });
+    }
+
+    // The attachable relationship allows you to define a polymorphic relationship
+    // This means that the attachment can belong to any model
+    public function attachable()
+    {
+        return $this->morphTo();
+    }
+
+    // The creator relationships allow you to define a polymorphic relationship
+    // This means that the creator can be any model
+    public function creator()
+    {
+        return $this->morphTo();
+    }
+
+    // The updater relationships allow you to define a polymorphic relationship
+    // This means that the updater can be any model
+    public function updater()
+    {
+        return $this->morphTo();
+    }
+
+}

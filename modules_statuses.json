@@ -4,5 +4,6 @@
     "Profile": true,
     "Socialite": true,
     "Setting": true,
-    "Client": true
+    "Client": true,
+    "Extra": true
 }
