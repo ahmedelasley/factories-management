@@ -7,6 +7,11 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Modules\Extra\Interfaces\AttributeServiceInterface;
+use Modules\Extra\Services\AttributeService;
+use Livewire\Livewire;
+use Modules\Extra\Livewire\Attributes\Index;
+
 
 class ExtraServiceProvider extends ServiceProvider
 {
@@ -27,6 +32,16 @@ class ExtraServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        // Livewire::setComponentNamespace('Modules\\Extra\\Http\\Livewire');
+
+        // تسجيل مكوّن Livewire
+        // Livewire::component(
+        //     'extra.index',
+        //     Index::class
+        // );
+
+        // Setting::observe(SettingObserver::class);
+
     }
 
     /**
@@ -36,6 +51,8 @@ class ExtraServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(AttributeServiceInterface::class, AttributeService::class);
+
     }
 
     /**

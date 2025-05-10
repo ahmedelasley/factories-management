@@ -3,6 +3,8 @@
 namespace Modules\Extra\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
+use App\Enums\Status;
 
 class UpdateAttributeRequest extends FormRequest
 {
@@ -11,7 +13,10 @@ class UpdateAttributeRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'attribute' => 'sometimes|string|unique:attributes,attribute,' . $this->route('attribute')->id,
+            'status' => ['nullable', new Enum(Status::class)],
+        ];
     }
 
     /**
