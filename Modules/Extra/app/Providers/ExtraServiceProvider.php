@@ -32,6 +32,8 @@ class ExtraServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->loadJsonTranslationsFrom(module_path('Extra', 'Resources/lang'));
+
         // Livewire::setComponentNamespace('Modules\\Extra\\Http\\Livewire');
 
         // تسجيل مكوّن Livewire

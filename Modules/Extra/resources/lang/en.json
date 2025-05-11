@@ -1,0 +1,22 @@
+{
+    "Extras"         : "Extras",
+    "Categories"     : "Categories",
+    "Attributes"     : "Attributes",
+    "Attachments"    : "Attachments",
+
+    "Attribute"      : "Attribute",
+    "Status"         : "Status",
+    "No. Values"     : "No. Values",
+    "Creator By"     : "Creator By",
+    "Created At"     : "Created At",
+    "Updater By"     : "Updater By",
+    "Updated At"     : "Updated At",
+    "Not Updated Yet" : "Not Updated Yet",
+    "Action"         : "Action",
+    "Values"         : "Values",
+    "No Values"      : "No Values",
+    "Attach Values"  : "Attach Values",
+    "Detach Values"  : "Detach Values"
+
+
+  }

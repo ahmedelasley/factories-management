@@ -11,6 +11,9 @@
                 </ol>
             </nav>
         </div>
+        <div class="d-flex my-xl-auto right-content">
+            @yield('side-header')
+        </div>
     </div>
     <!-- breadcrumb -->
     <!--end::App Content Header-->

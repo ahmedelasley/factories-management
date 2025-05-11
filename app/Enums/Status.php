@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum Status: string
 {
-    case INACTIVE = "inactive";
-    case ACTIVE = "active";
+    case INACTIVE = "Active";
+    case ACTIVE = "Inactive";
 
     public function isActive(): bool
     {
@@ -18,9 +18,16 @@ enum Status: string
     }
     public function label(): string
     {
+        return __($this->value);
+    }
+
+    
+    public function btnLabel(): string
+    {
         return match($this) {
-            self::ACTIVE => __('Active'),
-            self::INACTIVE => __('Inactive'),
+            self::ACTIVE => __('Activate'),
+            self::INACTIVE => __('Deactivate'),
         };
     }
+
 }

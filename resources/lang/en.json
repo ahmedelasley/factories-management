@@ -1,0 +1,24 @@
+{
+    "Home"      : "Home",
+
+    "Add"       : "Add",    
+    "Edit"      : "Edit",
+    "Delete"    : "Delete",
+    "Save"      : "Save",
+    "Cancel"    : "Cancel",
+    "Close"     : "Close",
+    "Search"    : "Search",
+    "Update"    : "Update",
+    "View"      : "View",
+    "Create"    : "Create",
+    "Active"    : "Active",
+    "Inactive"  : "Inactive",
+    "Activate"  : "Activate",
+    "Deactivate": "Deactivate",
+    "Unknown"   : "Unknown"
+
+
+
+
+
+  }

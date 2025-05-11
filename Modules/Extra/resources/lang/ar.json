@@ -1,0 +1,21 @@
+{
+    "Extras"         : "الإضافات",
+    "Categories"     : "الفئات",
+    "Attributes"     : "الخصائص",
+    "Attachments"    : "المرفقات",
+
+
+    "Attribute"      : "الخاصية",
+    "Status"         : "الحالة",
+    "No. Values"     : "عدد القيم",
+    "Creator By"     : "منشئ بواسطة",
+    "Created At"     : "تاريخ الإنشاء",
+    "Updater By"     : "محدث بواسطة",
+    "Updated At"     : "تاريخ التحديث",
+    "Not Updated Yet" : "لم يتم التحديث بعد",
+    "Action"         : "الإجراء",
+    "Values"         : "القيم",
+    "No Values"      : "لا توجد قيم",
+    "Attach Values"  : "إرفاق القيم",
+    "Detach Values"  : "فصل القيم"
+}

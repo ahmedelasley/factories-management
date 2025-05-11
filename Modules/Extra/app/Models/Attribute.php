@@ -20,16 +20,25 @@ class Attribute extends Model
         'creator_id', 'creator_type',
         'updater_id', 'updater_type',
     ];
+    protected $casts = [
+        'status' => \App\Enums\Status::class,
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
 
     // علاقات Polymorphic
     public function creator()
     {
-        return $this->morphTo();
+        return $this->morphTo()->withDefault([
+            'name' => __('Unknown')
+        ]);
     }
 
     public function updater()
     {
-        return $this->morphTo();
+        return $this->morphTo()->withDefault([
+            'name' => __('Unknown')
+        ]);
     }
 
     public function values()
