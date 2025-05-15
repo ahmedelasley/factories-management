@@ -1,0 +1,244 @@
+{
+    "emptyTable": "لا توجد بيانات متاحة في الجدول",
+    "info": "عرض _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+    "infoEmpty": "عرض 0 إلى 0 من أصل 0 مدخل",
+    "infoFiltered": "(تمت تصفيته من أصل _MAX_ مدخل)",
+    "infoThousands": ",",
+    "lengthMenu": "عرض _MENU_ مدخلات",
+    "loadingRecords": "جارٍ التحميل...",
+    "processing": "جارٍ المعالجة...",
+    "search": "ابحث:",
+    "zeroRecords": "لم يتم العثور على سجلات مطابقة",
+    "thousands": ",",
+    "paginate": {
+      "first": "الأول",
+      "last": "الأخير",
+      "next": "التالي",
+      "previous": "السابق"
+    },
+    "aria": {
+      "sortAscending": ": تفعيل لترتيب العمود تصاعديًا",
+      "sortDescending": ": تفعيل لترتيب العمود تنازليًا"
+    },
+    "autoFill": {
+      "cancel": "إلغاء",
+      "fill": "املأ كل الخلايا بـ <i>%d<\/i>",
+      "fillHorizontal": "تعبئة الخلايا أفقيًا",
+      "fillVertical": "تعبئة الخلايا عموديًا"
+    },
+    "buttons": {
+      "collection": "مجموعة",
+      "colvis": "إظهار الأعمدة",
+      "colvisRestore": "استعادة العرض",
+      "copy": "نسخ",
+      "copyKeys": "اضغط ctrl أو ⌘ + C لنسخ الجدول.<br><br>للإلغاء، اضغط هنا أو اضغط Escape.",
+      "copySuccess": {
+        "1": "تم نسخ صف واحد إلى الحافظة",
+        "_": "تم نسخ %d صفوف إلى الحافظة"
+      },
+      "copyTitle": "نسخ إلى الحافظة",
+      "csv": "CSV",
+      "excel": "Excel",
+      "pageLength": {
+        "-1": "إظهار كل الصفوف",
+        "_": "إظهار %d صفوف"
+      },
+      "pdf": "PDF",
+      "print": "طباعة",
+      "updateState": "تحديث",
+      "stateRestore": "استرجاع الحالة",
+      "savedStates": "الحالات المحفوظة",
+      "renameState": "إعادة تسمية",
+      "removeState": "حذف الحالة",
+      "removeAllStates": "حذف كل الحالات",
+      "createState": "إنشاء حالة"
+    },
+    "searchBuilder": {
+      "add": "إضافة شرط",
+      "button": {
+        "0": "منشئ البحث",
+        "_": "منشئ البحث (%d)"
+      },
+      "clearAll": "إزالة الكل",
+      "condition": "الشرط",
+      "conditions": {
+        "date": {
+          "after": "بعد",
+          "before": "قبل",
+          "between": "بين",
+          "empty": "فارغ",
+          "equals": "يساوي",
+          "not": "لا يساوي",
+          "notBetween": "ليس بين",
+          "notEmpty": "غير فارغ"
+        },
+        "number": {
+          "between": "بين",
+          "empty": "فارغ",
+          "equals": "يساوي",
+          "gt": "أكبر من",
+          "gte": "أكبر من أو يساوي",
+          "lt": "أقل من",
+          "lte": "أقل من أو يساوي",
+          "not": "لا يساوي",
+          "notBetween": "ليس بين",
+          "notEmpty": "غير فارغ"
+        },
+        "string": {
+          "contains": "يحتوي على",
+          "empty": "فارغ",
+          "endsWith": "ينتهي بـ",
+          "equals": "يساوي",
+          "not": "لا يساوي",
+          "notEmpty": "غير فارغ",
+          "startsWith": "يبدأ بـ",
+          "notContains": "لا يحتوي على",
+          "notStartsWith": "لا يبدأ بـ",
+          "notEndsWith": "لا ينتهي بـ"
+        },
+        "array": {
+          "without": "بدون",
+          "notEmpty": "غير فارغ",
+          "not": "لا يساوي",
+          "contains": "يحتوي على",
+          "empty": "فارغ",
+          "equals": "يساوي"
+        }
+      },
+      "data": "البيانات",
+      "deleteTitle": "حذف شرط التصفية",
+      "leftTitle": "تحريك يسار",
+      "logicAnd": "و",
+      "logicOr": "أو",
+      "rightTitle": "تحريك يمين",
+      "title": {
+        "0": "منشئ البحث",
+        "_": "منشئ البحث (%d)"
+      },
+      "value": "القيمة"
+    },
+    "searchPanes": {
+      "clearMessage": "إزالة الكل",
+      "collapse": {
+        "0": "بحث",
+        "_": "بحث (%d)"
+      },
+      "count": "{total}",
+      "countFiltered": "{shown} من {total}",
+      "emptyPanes": "لا توجد خيارات بحث",
+      "loadMessage": "تحميل خيارات البحث...",
+      "title": "الفلاتر النشطة - %d",
+      "showMessage": "إظهار الكل",
+      "collapseMessage": "إخفاء الكل"
+    },
+    "select": {
+      "cells": {
+        "1": "تم تحديد خلية واحدة",
+        "_": "تم تحديد %d خلايا"
+      },
+      "columns": {
+        "1": "تم تحديد عمود واحد",
+        "_": "تم تحديد %d أعمدة"
+      },
+      "rows": {
+        "1": "تم تحديد صف واحد",
+        "_": "تم تحديد %d صفوف"
+      }
+    },
+    "datetime": {
+      "previous": "السابق",
+      "next": "التالي",
+      "hours": "ساعة",
+      "minutes": "دقيقة",
+      "seconds": "ثانية",
+      "unknown": "-",
+      "amPm": [
+        "ص",
+        "م"
+      ],
+      "weekdays": [
+        "الأحد",
+        "الإثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+      ],
+      "months": [
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+        "نوفمبر",
+        "ديسمبر"
+      ]
+    },
+    "editor": {
+      "close": "إغلاق",
+      "create": {
+        "button": "إضافة",
+        "title": "إنشاء سجل جديد",
+        "submit": "إنشاء"
+      },
+      "edit": {
+        "button": "تعديل",
+        "title": "تعديل السجل",
+        "submit": "تحديث"
+      },
+      "remove": {
+        "button": "حذف",
+        "title": "حذف",
+        "submit": "حذف",
+        "confirm": {
+          "_": "هل أنت متأكد أنك تريد حذف %d صفوف؟",
+          "1": "هل أنت متأكد أنك تريد حذف صف واحد؟"
+        }
+      },
+      "error": {
+        "system": "حدث خطأ في النظام (<a target=\"_blank\" rel=\"nofollow\" href=\"#\">مزيد من المعلومات<\/a>)."
+      },
+      "multi": {
+        "title": "قيم متعددة",
+        "info": "القيم المحددة تحتوي على قيم مختلفة لهذا الحقل. لتعيين قيمة موحدة، اضغط هنا.",
+        "restore": "تراجع",
+        "noMulti": "لا يمكن تحرير هذا الحقل كجزء من مجموعة."
+      }
+    },
+    "stateRestore": {
+      "renameTitle": "إعادة تسمية الحالة",
+      "renameLabel": "الاسم الجديد لـ %s:",
+      "renameButton": "إعادة تسمية",
+      "removeTitle": "حذف الحالة",
+      "removeSubmit": "حذف",
+      "removeJoiner": " و ",
+      "removeError": "فشل في حذف الحالة.",
+      "removeConfirm": "هل أنت متأكد من حذف %s؟",
+      "emptyStates": "لا توجد حالات محفوظة",
+      "emptyError": "لا يمكن أن يكون الاسم فارغًا.",
+      "duplicateError": "يوجد حالة بنفس الاسم.",
+      "creationModal": {
+        "toggleLabel": "تشمل:",
+        "title": "إنشاء حالة جديدة",
+        "select": "تحديد",
+        "searchBuilder": "منشئ البحث",
+        "search": "بحث",
+        "scroller": "موضع التمرير",
+        "paging": "الصفحات",
+        "order": "الترتيب",
+        "name": "الاسم:",
+        "columns": {
+          "visible": "ظهور العمود",
+          "search": "بحث العمود"
+        },
+        "button": "إنشاء"
+      }
+    }
+  }
+  

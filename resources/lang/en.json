@@ -1,13 +1,12 @@
 {
     "Home"      : "Home",
 
-    "Add"       : "Add",    
-    "Edit"      : "Edit",
-    "Delete"    : "Delete",
-    "Save"      : "Save",
+    "Add"       : "Add :type New",    
+    "Edit"      : "Edit :type",
+    "Delete"    : "Delete :type",
+    "Save"      : "Save  :type",
     "Cancel"    : "Cancel",
     "Close"     : "Close",
-    "Search"    : "Search",
     "Update"    : "Update",
     "View"      : "View",
     "Create"    : "Create",
@@ -15,10 +14,34 @@
     "Inactive"  : "Inactive",
     "Activate"  : "Activate",
     "Deactivate": "Deactivate",
-    "Unknown"   : "Unknown"
+    "Unknown"   : "Unknown",
 
+    "Claer Search" : "Clear Search",
+    "Search Placeholder" : "Search :type",
+    "Search Results" : "Search Results for :type",
+    "Search Results Empty" : "No results found for :type",
+    "Search Results Empty All" : "No results found",
+    "Search Results Empty Filter" : "No results found for :type with this filter",
+    "Search Results Empty Filter All" : "No results found with this filter",
+    "Search Results Empty Filter All No Type" : "No results found with this filter",
+    "Search Results Empty Filter All No Type No Search" : "No results found",
 
+    "Filter By" : "Filter By",
+    "Export Data" : "Export Data",
+    "Import Data" : "Import Data",
 
-
+    
+    "Paginate" : "Paginate",
+    "Showing"       : "Showing",
+    "of"           : "of",
+    "to"           : "to",
+    "Entries"           : "Entries",
+    "results"           : "results",
+    "Search"       : "Search",
+    "ShowingEntries" : "Showing :from to :to of :total Entries",
+    "first": "First",
+    "last": "Last",
+    "next": "Next",
+    "previous": "Previous"
 
   }

@@ -7,8 +7,8 @@ use Modules\Setting\Http\Requests\SettingRequest;
 use Illuminate\Support\Facades\DB;
 use Modules\Setting\Models\Setting;
 use Modules\Setting\Services\SettingValidationService;
-
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+
 class Edit extends Component
 {
 

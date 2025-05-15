@@ -6,6 +6,7 @@
 
 
     "Attribute"      : "الخاصية",
+    "attribute"      : "خاصية",
     "Status"         : "الحالة",
     "No. Values"     : "عدد القيم",
     "Creator By"     : "منشئ بواسطة",
@@ -17,5 +18,11 @@
     "Values"         : "القيم",
     "No Values"      : "لا توجد قيم",
     "Attach Values"  : "إرفاق القيم",
-    "Detach Values"  : "فصل القيم"
+    "Detach Values"  : "فصل القيم",
+    "Showing"       : "1عرض",
+    "of"           : "من",
+    "to"           : "إلى",
+    "No"           : "لا",
+    "Search"       : "بحث"
+
 }

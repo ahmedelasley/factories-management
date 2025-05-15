@@ -15,7 +15,7 @@ class StoreAttributeRequest extends FormRequest
     {
         return [
             'attribute' => 'required|string|unique:attributes,attribute',
-            'status' => ['nullable', new Enum(Status::class)],
+            // 'status' => ['sometimes', 'nullable', new Enum(Status::class)],
         ];
     }
 

@@ -5,6 +5,8 @@
     "Attachments"    : "Attachments",
 
     "Attribute"      : "Attribute",
+    "attribute"      : "Attribute",
+    
     "Status"         : "Status",
     "No. Values"     : "No. Values",
     "Creator By"     : "Creator By",
@@ -17,6 +19,7 @@
     "No Values"      : "No Values",
     "Attach Values"  : "Attach Values",
     "Detach Values"  : "Detach Values"
+
 
 
   }

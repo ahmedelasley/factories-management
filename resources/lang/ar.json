@@ -1,12 +1,12 @@
 {
     "Home": "الصفحة الرئيسية",
-    "Add": "إضافة",
-    "Edit": "تعديل",
-    "Delete": "حذف",
-    "Save": "حفظ",
+    "Add": "إضافة :type جديد",
+    "Edit": "تعديل :type",
+    "Delete": "حذف :type",
+    "Save": "حفظ :type",
+
     "Cancel": "إلغاء",
     "Close": "إغلاق",
-    "Search": "بحث",
     "Update": "تحديث",
     "View": "عرض",    
     "Create": "إنشاء",
@@ -14,5 +14,33 @@
     "Inactive": "غير نشط",
     "Activate": "تفعيل",
     "Deactivate": "إلغاء التفعيل",
-    "Unknown": "غير معروف"
+    "Unknown": "غير معروف",
+
+    "Clear Search": "مسح البحث",
+    "Search Placeholder": "بحث في :type",
+    "Search Results": "نتائج البحث لـ :type",
+    "Search Results Empty": "لا توجد نتائج لـ :type",
+    "Search Results Empty All": "لا توجد نتائج",
+    "Search Results Empty Filter": "لا توجد نتائج لـ :type مع هذا الفلتر",
+    "Search Results Empty Filter All": "لا توجد نتائج مع هذا الفلتر",
+    "Search Results Empty Filter All No Type": "لا توجد نتائج مع هذا الفلتر",
+    "Search Results Empty Filter All No Type No Search": "لا توجد نتائج",
+
+    "Filter By": "تصفية حسب",
+    "Export Data": "تصدير البيانات",
+    "Import Data": "استيراد البيانات",
+    "Paginate": "تقسيم الصفحات",
+
+
+    "Showing": "عرض",
+    "of": "من",
+    "to": "إلى",
+    "Entries": "المدخلات",
+    "results": "النتائج",
+    "Search": "بحث",
+    "ShowingEntries": "عرض :from إلى :to من :total مدخلات",
+    "first": "الأول",
+    "last": "الأخير",
+    "next": "التالي",
+    "previous": "السابق"
 }

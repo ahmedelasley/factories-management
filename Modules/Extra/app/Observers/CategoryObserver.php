@@ -5,15 +5,17 @@ namespace Modules\Extra\Observers;
 use Modules\Extra\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryObserverObserver
+class CategoryObserver
 {
     /**
      * Handle the Category "creating" event.
      */
     public function creating(Category $category): void
     {
-        $category->creator_id = Auth::id();
-        $category->creator_type = Auth::user()::class;
+        if (Auth::check()) {
+            $category->creator_id = Auth::id();
+            $category->creator_type = Auth::user()::class;
+        }
     }
 
     /**
@@ -26,8 +28,10 @@ class CategoryObserverObserver
      */
     public function updating(Category $category): void
     {
-        $category->updater_id = Auth::id();
-        $category->updater_type = Auth::user()::class;
+        if (Auth::check()) {
+            $category->updater_id = Auth::id();
+            $category->updater_type = Auth::user()::class;
+        }
     }
 
     /**

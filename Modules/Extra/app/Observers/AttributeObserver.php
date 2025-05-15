@@ -5,15 +5,17 @@ namespace Modules\Extra\Observers;
 use Modules\Extra\Models\Attribute;
 use Illuminate\Support\Facades\Auth;
 
-class AttributeObserverObserver
+class AttributeObserver
 {
     /**
      * Handle the Attribute "creating" event.
      */
     public function creating(Attribute $attribute): void
     {
-        $attribute->creator_id = Auth::id();
-        $attribute->creator_type = Auth::user()::class;
+        if (Auth::check()) {
+            $attribute->creator_id = Auth::id();
+            $attribute->creator_type = Auth::user()::class;
+        }
     }
 
     /**
@@ -26,8 +28,10 @@ class AttributeObserverObserver
      */
     public function updating(Attribute $attribute): void
     {
-        $attribute->updater_id = Auth::id();
-        $attribute->updater_type = Auth::user()::class;
+        if (Auth::check()) {
+            $attribute->updater_id = Auth::id();
+            $attribute->updater_type = Auth::user()::class;
+        }
     }
 
     /**

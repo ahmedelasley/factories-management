@@ -5,7 +5,7 @@ namespace Modules\Extra\Observers;
 use Modules\Extra\Models\Attachment;
 use Illuminate\Support\Facades\Auth;
 
-class AttachmentObserverObserver
+class AttachmentObserver
 {
 
     /**
@@ -13,8 +13,10 @@ class AttachmentObserverObserver
      */
     public function creating(Attachment $attachment): void
     {
-        $attachment->creator_id = Auth::id();
-        $attachment->creator_type = Auth::user()::class;
+        if (Auth::check()) {
+            $attachment->creator_id = Auth::id();
+            $attachment->creator_type = Auth::user()::class;
+        }
     }
     
     /**
@@ -27,8 +29,10 @@ class AttachmentObserverObserver
      */
     public function updating(Attachment $attachment): void
     {
-        $attachment->updater_id = Auth::id();
-        $attachment->updater_type = Auth::user()::class;
+        if (Auth::check()) {
+            $attachment->updater_id = Auth::id();
+            $attachment->updater_type = Auth::user()::class;
+        }
     }
 
     /**

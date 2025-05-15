@@ -5,15 +5,17 @@ namespace Modules\Extra\Observers;
 use Modules\Extra\Models\Value;
 use Illuminate\Support\Facades\Auth;
 
-class ValueObserverObserver
+class ValueObserver
 {
     /**
      * Handle the Value "creating" event.
      */
     public function creating(Value $value): void
     {
-        $value->creator_id = Auth::id();
-        $value->creator_type = Auth::user()::class;
+        if (Auth::check()) {
+            $value->creator_id = Auth::id();
+            $value->creator_type = Auth::user()::class;
+        }
     }
     
     /**
@@ -26,8 +28,10 @@ class ValueObserverObserver
      */
     public function updating(Value $value): void
     {
-        $value->updater_id = Auth::id();
-        $value->updater_type = Auth::user()::class;
+        if (Auth::check()) {
+            $value->updater_id = Auth::id();
+            $value->updater_type = Auth::user()::class;
+        }
     }
 
     /**

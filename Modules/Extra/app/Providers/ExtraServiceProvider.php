@@ -9,13 +9,21 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Modules\Extra\Interfaces\AttributeServiceInterface;
 use Modules\Extra\Services\AttributeService;
-use Livewire\Livewire;
-use Modules\Extra\Livewire\Attributes\Index;
+use Modules\Extra\Models\Attribute;
+use Modules\Extra\Models\Value;
+use Modules\Extra\Models\Category;
+use Modules\Extra\Models\Attachment;
 
+use Modules\Extra\Observers\AttributeObserver;
+use Modules\Extra\Observers\ValueObserver;
+use Modules\Extra\Observers\CategoryObserver;
+use Modules\Extra\Observers\AttachmentObserver;
+use Illuminate\Support\Facades\File;
+use App\Traits\RegistersModuleObservers;
 
 class ExtraServiceProvider extends ServiceProvider
 {
-    use PathNamespace;
+    use PathNamespace, RegistersModuleObservers;
 
     protected string $name = 'Extra';
 
@@ -33,6 +41,13 @@ class ExtraServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
         $this->loadJsonTranslationsFrom(module_path('Extra', 'Resources/lang'));
+
+        // تسجيل المراقبين
+        Attribute::observe(AttributeObserver::class);
+        Value::observe(ValueObserver::class);
+        Category::observe(CategoryObserver::class);
+        Attachment::observe(AttachmentObserver::class);
+        // $this->registerModuleObservers('Extra');
 
         // Livewire::setComponentNamespace('Modules\\Extra\\Http\\Livewire');
 

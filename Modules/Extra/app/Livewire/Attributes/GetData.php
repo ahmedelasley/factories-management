@@ -6,26 +6,48 @@ use Livewire\Component;
 use Modules\Extra\Interfaces\AttributeServiceInterface;
 use Livewire\WithPagination;
 
-class Index extends Component
+class GetData extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public string $search = '';
     public string $sortField = 'created_at';
     public string $sortDirection = 'desc';
 
+    protected $listeners = [
+        'refreshData' => 'refreshWithEvent',
+    ];
+    protected function queryString()
+    {
+        return [
+            'search' => [
+                'except' => '',
+                'as' => 'q',
+            ],
+            'paginate' => [
+                'except' => 1,
+            ],
+        ];
+    }
 
+    
+    public function refreshWithEvent()
+    {
+        $this->resetPage(); // لإعادة تحميل الصفحة الأولى بعد أي تعديل
+        $this->dispatch('reinit-datatable'); // يعيد تهيئة الجدول
+    }
     
     public function render(AttributeServiceInterface $service)
     {
-        $attributes = $service->paginateWithFilters([
+        $data = $service->paginateWithFilters([
             'search' => $this->search,
             'sortField' => $this->sortField,
             'sortDirection' => $this->sortDirection,
-            'perPage' => 10
+            'perPage' => 10, // يمكنك تغيير عدد العناصر في الصفحة حسب الحاجة
         ]);
-        return view('extra::livewire.attributes.index', [
-            'attributes' => $attributes
+        return view('extra::livewire.attributes.get-data', [
+            'data' => $data
         ]);
     }
 

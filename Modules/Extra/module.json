@@ -7,5 +7,7 @@
     "providers": [
         "Modules\\Extra\\Providers\\ExtraServiceProvider"
     ],
-    "files": []
+    "files": [],
+    "path": "Modules/Extra"
+
 }

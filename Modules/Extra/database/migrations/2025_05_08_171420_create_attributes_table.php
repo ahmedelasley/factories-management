@@ -19,7 +19,7 @@ return new class extends Migration
                 'status',
                 array_column(Status::cases(), 'value')
             )->default(Status::cases()[0]->value);
-            $table->morphs('creator'); // Created By
+            $table->nullableMorphs('creator'); // Created By
             $table->nullableMorphs('updater'); // Updated By
             $table->timestamps();
         });

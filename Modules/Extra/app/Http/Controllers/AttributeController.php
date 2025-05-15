@@ -12,7 +12,7 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        return view('extra::index');
+        return view('extra::pages.attributes.index');
     }
 
     /**
