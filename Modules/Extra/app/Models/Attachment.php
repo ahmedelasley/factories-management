@@ -21,7 +21,7 @@ class Attachment extends Model
         'id', 'file_name', 'file_path', 'file_size', 'file_type',
         'attachable_id', 'attachable_type',
         'creator_id', 'creator_type',
-        'updater_id', 'updater_type',
+        'editor_id', 'editor_type',
         'description', 'status'
     ];
 
@@ -51,9 +51,9 @@ class Attachment extends Model
         return $this->morphTo();
     }
 
-    // The updater relationships allow you to define a polymorphic relationship
-    // This means that the updater can be any model
-    public function updater()
+    // The editor relationships allow you to define a polymorphic relationship
+    // This means that the editor can be any model
+    public function editor()
     {
         return $this->morphTo();
     }

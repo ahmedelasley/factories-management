@@ -6,12 +6,12 @@
 
     "Attribute"      : "Attribute",
     "attribute"      : "Attribute",
-    
+
     "Status"         : "Status",
     "No. Values"     : "No. Values",
     "Creator By"     : "Creator By",
     "Created At"     : "Created At",
-    "Updater By"     : "Updater By",
+    "editor By"     : "editor By",
     "Updated At"     : "Updated At",
     "Not Updated Yet" : "Not Updated Yet",
     "Action"         : "Action",

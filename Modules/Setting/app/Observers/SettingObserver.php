@@ -23,11 +23,11 @@ class SettingObserver
     public function updating(Setting $setting): void
     {
         if (Auth::check()) {
-            $setting->updater_id = Auth::id();
-            $setting->updater_type = Auth::user()::class;
+            $setting->editor_id = Auth::id();
+            $setting->editor_type = Auth::user()::class;
         }
     }
-    
+
     /**
      * Handle the Setting "updated" event.
      */

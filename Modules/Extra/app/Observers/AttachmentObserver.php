@@ -18,7 +18,7 @@ class AttachmentObserver
             $attachment->creator_type = Auth::user()::class;
         }
     }
-    
+
     /**
      * Handle the Attachment "created" event.
      */
@@ -30,8 +30,8 @@ class AttachmentObserver
     public function updating(Attachment $attachment): void
     {
         if (Auth::check()) {
-            $attachment->updater_id = Auth::id();
-            $attachment->updater_type = Auth::user()::class;
+            $attachment->editor_id = Auth::id();
+            $attachment->editor_type = Auth::user()::class;
         }
     }
 

@@ -4,9 +4,13 @@ use Modules\Extra\Interfaces\AttributeServiceInterface;
 use Modules\Extra\Models\Attribute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
 
 class AttributeService implements AttributeServiceInterface
 {
+    protected string $cacheKey = 'attributes:all';
+
+
     public function paginateWithFilters(array $filters): LengthAwarePaginator
     {
         // return Attribute::query()
@@ -16,13 +20,17 @@ class AttributeService implements AttributeServiceInterface
             // ->orderBy('created_at', 'desc')
             // ->paginate(10);
 
-
-        return Attribute::withCount('values')
-            ->when($filters['search'], fn($query) =>
-                $query->where('attribute', 'like', '%' . $filters['search'] . '%')
-            )
-            ->orderBy($filters['sortField'], $filters['sortDirection'])
+        return Attribute::with(['creator', 'editor', 'values'])->withCount('values')
+            ->filter($filters) // use Scope filter
             ->paginate($filters['perPage'] ?? 10);
+
+
+        // return Attribute::withCount('values')
+        //     ->when($filters['search'], fn($query) =>
+        //         $query->where('attribute', 'like', '%' . $filters['search'] . '%')
+        //     )
+        //     ->orderBy($filters['sortField'], $filters['sortDirection'])
+        //     ->paginate($filters['perPage'] ?? 10);
 
 
 
@@ -54,4 +62,14 @@ class AttributeService implements AttributeServiceInterface
     {
         $attribute->values()->detach($valueId);
     }
+
+    public function refreshCache(array $filters): void
+    {
+        Cache::forget($this->cacheKey);
+
+        Cache::remember($this->cacheKey, now()->addMinutes(5), function () use ($filters) {
+            return $this->paginateWithFilters($filters);
+        });
+    }
+
 }

@@ -4,9 +4,11 @@ namespace Modules\Extra\Livewire\Attributes\Partials;
 
 use Livewire\Component;
 use Modules\Extra\Models\Attribute;
-use Modules\Extra\Http\Requests\StoreAttributeRequest;
-use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+use Illuminate\Support\Facades\Cache;
 use Modules\Extra\Livewire\Attributes\GetData;
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
+use Modules\Extra\Http\Requests\StoreAttributeRequest;
+use Modules\Extra\Interfaces\AttributeServiceInterface;
 
 class Create extends Component
 {
@@ -31,12 +33,20 @@ class Create extends Component
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function store(): void
+    public function store(AttributeServiceInterface $service): void
     {
         $validated = $this->validate();
 
         $created = Attribute::create([
             'attribute' => $validated['attribute'],
+        ]);
+
+        //cache
+        $service->refreshCache([
+            'search' => '',
+            'sortField' => 'created_at',
+            'sortDirection' => 'desc',
+            'perPage' => 10,
         ]);
 
         // إعادة تعيين البيانات المدخلة

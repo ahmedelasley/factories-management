@@ -18,7 +18,7 @@ class Attribute extends Model
         'attribute',
         'status',
         'creator_id', 'creator_type',
-        'updater_id', 'updater_type',
+        'editor_id', 'editor_type',
     ];
     protected $casts = [
         'status' => \App\Enums\Status::class,
@@ -34,7 +34,7 @@ class Attribute extends Model
         ]);
     }
 
-    public function updater()
+    public function editor()
     {
         return $this->morphTo()->withDefault([
             'name' => __('Unknown')
@@ -45,8 +45,30 @@ class Attribute extends Model
     {
         return $this->belongsToMany(Value::class, 'attribute_value')
                     ->withTimestamps()
-                    ->withPivot('status', 'creator_type', 'creator_id', 'updater_type', 'updater_id');
+                    ->withPivot('status', 'creator_type', 'creator_id', 'editor_type', 'editor_id');
     }
+
+
+    // Scopes
+    public function scopeFilter($query, array $filters)
+    {
+        $allowedSortFields = ['attribute', 'status', 'created_at', 'updated_at'];
+
+        $sortField = in_array($filters['sortField'] ?? '', $allowedSortFields)
+            ? $filters['sortField']
+            : 'created_at';
+
+        $sortDirection = in_array(strtolower($filters['sortDirection'] ?? 'asc'), ['asc', 'desc'])
+            ? strtolower($filters['sortDirection'])
+            : 'asc';
+
+        return $query
+            ->when($filters['search'] ?? null, fn($q, $search) =>
+                $q->where('attribute', 'like', "%$search%")
+            )
+            ->orderBy($sortField, $sortDirection);
+    }
+
 
 
 }

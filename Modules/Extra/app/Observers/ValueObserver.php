@@ -17,7 +17,7 @@ class ValueObserver
             $value->creator_type = Auth::user()::class;
         }
     }
-    
+
     /**
      * Handle the Value "created" event.
      */
@@ -29,8 +29,8 @@ class ValueObserver
     public function updating(Value $value): void
     {
         if (Auth::check()) {
-            $value->updater_id = Auth::id();
-            $value->updater_type = Auth::user()::class;
+            $value->editor_id = Auth::id();
+            $value->editor_type = Auth::user()::class;
         }
     }
 

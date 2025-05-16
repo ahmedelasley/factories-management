@@ -29,8 +29,8 @@ class CategoryObserver
     public function updating(Category $category): void
     {
         if (Auth::check()) {
-            $category->updater_id = Auth::id();
-            $category->updater_type = Auth::user()::class;
+            $category->editor_id = Auth::id();
+            $category->editor_type = Auth::user()::class;
         }
     }
 

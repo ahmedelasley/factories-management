@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('data_type', array_column(SettingDataType::cases(), 'value'))->default(SettingDataType::cases()[0]->value); // Data Type (string, integer, boolean, text, json)
             $table->string('description')->nullable()->comment('Description'); // Description
             $table->string('icon')->nullable()->comment('icon'); // Name
-            
+
             $table->enum(
                 'type',
                 array_column(SettingType::cases(), 'value')
@@ -33,7 +33,7 @@ return new class extends Migration
             )->default(SettingStatus::cases()[0]->value);
 
             $table->morphs('creator'); // Created By
-            $table->nullableMorphs('updater'); // Updated By
+            $table->nullableMorphs('editor'); // Updated By
 
 
 

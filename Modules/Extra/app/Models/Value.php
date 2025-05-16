@@ -17,7 +17,7 @@ class Value extends Model
         'value',
         'status',
         'creator_id', 'creator_type',
-        'updater_id', 'updater_type',
+        'editor_id', 'editor_type',
     ];
 
     // علاقات Polymorphic
@@ -26,7 +26,7 @@ class Value extends Model
         return $this->morphTo();
     }
 
-    public function updater()
+    public function editor()
     {
         return $this->morphTo();
     }
@@ -35,7 +35,7 @@ class Value extends Model
     {
         return $this->belongsToMany(Attribute::class, 'attribute_value')
                     ->withTimestamps()
-                    ->withPivot('status', 'creator_type', 'creator_id', 'updater_type', 'updater_id');
+                    ->withPivot('status', 'creator_type', 'creator_id', 'editor_type', 'editor_id');
     }
 
 

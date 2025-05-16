@@ -24,7 +24,7 @@ return new class extends Migration
             )->default(Status::cases()[0]->value);
 
             $table->morphs('creator');
-            $table->nullableMorphs('updater');
+            $table->nullableMorphs('editor');
 
             $table->timestamps();
 

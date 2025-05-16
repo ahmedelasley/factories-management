@@ -61,7 +61,7 @@
                     <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel">100</a></li>
                 </ul>
             </div>
-      
+
             {{-- <select wire:model.live="paginate" class="form-control w-10 m-3" style="width:75px" id="paginate">
                 <option disabled value="">Select a Paginate...</option>
                 <option value="{{ getSetting('pagination') }}">{{ getSetting('pagination') }} *</option>
@@ -86,7 +86,7 @@
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Updater By')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('editor By')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
                         </tr>
@@ -120,8 +120,8 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($value->updater)   
-                                        <span class="badge badge-{{ $value->updater->name == __('Unknown') ? 'danger' : 'success' }}">{{ $value->updater?->name }}</span>
+                                    @if ($value->editor)
+                                        <span class="badge badge-{{ $value->editor->name == __('Unknown') ? 'danger' : 'success' }}">{{ $value->editor?->name }}</span>
                                     @elseif ($value->updated_at == null)
                                         <span class="badge badge-success">{{ __('Not Updated Yet')}}</span>
                                     @else
@@ -148,7 +148,7 @@
                                     <button wire:click="toggleStatus({{ $value->id }})" class="btn btn-{{ $value->status === App\Enums\Status::cases()[0] ? 'warning' : 'info' }} btn-sm">
                                         {{ $value->status->btnLabel() }}
                                     </button>
-                                    
+
                                 </td>
                             </tr>
                         @endforeach
@@ -161,7 +161,7 @@
                             <th>{{ __('No. Values')}}</th>
                             <th>{{ __('Creator By')}}</th>
                             <th>{{ __('Created At')}}</th>
-                            <th>{{ __('Updater By')}}</th>
+                            <th>{{ __('editor By')}}</th>
                             <th>{{ __('Updated At')}}</th>
                             <th>{{ __('Action')}}</th>
                             <th>{{ __('Values')}}</th>
@@ -176,7 +176,7 @@
                     {{ $data->withQueryString()->onEachSide(0)->links() }} {{-- Laravel pagination links --}}
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 @push('scripts')

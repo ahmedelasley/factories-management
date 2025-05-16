@@ -31,7 +31,7 @@ class Setting extends Model
         'status' => SettingStatus::class,
     ];
 
-    
+
     /**
      * Get the user that created the setting.
      */
@@ -43,11 +43,11 @@ class Setting extends Model
     /**
      * Get the user that updated the setting.
      */
-    public function updater(): MorphTo
+    public function editor(): MorphTo
     {
         return $this->morphTo(null, 'updated_id', 'id');
     }
-   
+
     /**
      * Scope a query to only include settings of a given data type.
      *
@@ -57,14 +57,14 @@ class Setting extends Model
      */
     public function scopeDataType($query, SettingDataType|string $dataType)
     {
-        $value = $dataType instanceof SettingDataType 
-            ? $dataType->value 
+        $value = $dataType instanceof SettingDataType
+            ? $dataType->value
             : $dataType;
-            
+
         return $query->where('data_type', $value);
     }
 
-    
+
     /**
      * Scope a query to only include settings of a given type.
      *
@@ -75,10 +75,10 @@ class Setting extends Model
 
     public function scopeType($query, SettingType|string $type)
     {
-        $value = $type instanceof SettingType 
-            ? $type->value 
+        $value = $type instanceof SettingType
+            ? $type->value
             : $type;
-            
+
         return $query->where('type', $value);
     }
 
@@ -91,10 +91,10 @@ class Setting extends Model
      */
     public function scopeStatus($query, SettingStatus|string $status)
     {
-        $value = $status instanceof SettingStatus 
-            ? $status->value 
+        $value = $status instanceof SettingStatus
+            ? $status->value
             : $status;
-            
+
         return $query->where('status', $value);
     }
 
@@ -118,6 +118,6 @@ class Setting extends Model
     {
         return $query->where('status', SettingStatus::INACTIVE);
     }
-    
+
 
 }

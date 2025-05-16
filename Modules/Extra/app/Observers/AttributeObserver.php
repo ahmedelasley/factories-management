@@ -29,8 +29,8 @@ class AttributeObserver
     public function updating(Attribute $attribute): void
     {
         if (Auth::check()) {
-            $attribute->updater_id = Auth::id();
-            $attribute->updater_type = Auth::user()::class;
+            $attribute->editor_id = Auth::id();
+            $attribute->editor_type = Auth::user()::class;
         }
     }
 
