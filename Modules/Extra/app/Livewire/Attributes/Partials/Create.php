@@ -37,17 +37,15 @@ class Create extends Component
     {
         $validated = $this->validate();
 
-        $created = Attribute::create([
+        
+        $data = [
             'attribute' => $validated['attribute'],
-        ]);
+        ];
+        $service->create($data);
 
-        //cache
-        $service->refreshCache([
-            'search' => '',
-            'sortField' => 'created_at',
-            'sortDirection' => 'desc',
-            'perPage' => 10,
-        ]);
+        // Attribute::create([
+        //     'attribute' => $validated['attribute'],
+        // ]);
 
         // إعادة تعيين البيانات المدخلة
         $this->reset();
@@ -64,7 +62,18 @@ class Create extends Component
             ->success()
             ->show();
     }
-
+    public function close()
+    {
+        // Reset form fields
+        $this->reset();
+    
+        // Reset validation errors
+        $this->resetValidation();
+        $this->resetErrorBag();
+    
+        // Close modal
+        $this->dispatch('refreshData');
+    }
     /**
      * عرض واجهة إنشاء الخاصية.
      */

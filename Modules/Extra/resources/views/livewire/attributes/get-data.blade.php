@@ -26,8 +26,9 @@
                         <i class='bx bx-filter-alt'></i>
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('name')">Name</a></li>
-                      {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('code')">Code</a></li> --}}
+                        <li><a class="dropdown-item {{ $searchField == 'id' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('id')">Id</a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'attribute' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('attribute')">Attribute</a></li>
+                        {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('code')">Code</a></li> --}}
                     </ul>
                 </div>
 
@@ -52,13 +53,13 @@
             </div>
             <div class=" m-3" style="margin-inline-start: 10px">
                 <button type="button" class="btn btn-outline-light btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Paginate') }}">
-                    10
+                    {{ $paginate }}
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF">10</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel">25</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF">50</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel">100</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(10)">10</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(25)">25</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(50)">50</a></li>
+                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(100)">100</a></li>
                 </ul>
             </div>
 
@@ -79,16 +80,16 @@
                 <table id="" class="table table-striped table-bordered table-hover text-md-wrap text-center" >
                     {{-- <thead> --}}
                         <tr class="bg-dark fs-14 text-bold text-white">
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF"># <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Values')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('No. Values')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('editor By')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="exportPDF">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')"># <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('attribute')">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Values')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('No. Values')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('editor By')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
                         </tr>
                     {{-- </thead> --}}
                     <tbody>

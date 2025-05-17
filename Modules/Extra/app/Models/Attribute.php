@@ -50,24 +50,24 @@ class Attribute extends Model
 
 
     // Scopes
-    public function scopeFilter($query, array $filters)
-    {
-        $allowedSortFields = ['attribute', 'status', 'created_at', 'updated_at'];
+    // public function scopeFilter($query, array $filters)
+    // {
+    //     $allowedSortFields = ['attribute', 'status', 'created_at', 'updated_at'];
 
-        $sortField = in_array($filters['sortField'] ?? '', $allowedSortFields)
-            ? $filters['sortField']
-            : 'created_at';
+    //     $sortField = in_array($filters['sortField'] ?? '', $allowedSortFields)
+    //         ? $filters['sortField']
+    //         : 'created_at';
 
-        $sortDirection = in_array(strtolower($filters['sortDirection'] ?? 'asc'), ['asc', 'desc'])
-            ? strtolower($filters['sortDirection'])
-            : 'asc';
+    //     $sortDirection = in_array(strtolower($filters['sortDirection'] ?? 'asc'), ['asc', 'desc'])
+    //         ? strtolower($filters['sortDirection'])
+    //         : 'asc';
 
-        return $query
-            ->when($filters['search'] ?? null, fn($q, $search) =>
-                $q->where('attribute', 'like', "%$search%")
-            )
-            ->orderBy($sortField, $sortDirection);
-    }
+    //     return $query
+    //         ->when($filters['search'] ?? null, fn($q, $search) =>
+    //             $q->where('attribute', 'like', "%$search%")
+    //         )
+    //         ->orderBy($sortField, $sortDirection);
+    // }
 
 
 

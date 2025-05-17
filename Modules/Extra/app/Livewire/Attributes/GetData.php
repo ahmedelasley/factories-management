@@ -5,7 +5,6 @@ namespace Modules\Extra\Livewire\Attributes;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Extra\Interfaces\AttributeServiceInterface;
-use Illuminate\Support\Facades\Cache;
 
 class GetData extends Component
 {
@@ -14,12 +13,16 @@ class GetData extends Component
     protected $paginationTheme = 'bootstrap';
 
     public string $search = '';
+    public string $searchField = 'attribute';
     public string $sortField = 'created_at';
     public string $sortDirection = 'desc';
-    public int $perPage = 10;
+    public int $paginate = 10;
+
+    // /** @var AttributeServiceInterface */
+    public $service;
 
     protected $listeners = [
-        'refreshData' => 'refresh',
+        'refreshData' => 'refreshComponent',
     ];
 
     protected function queryString(): array
@@ -30,50 +33,86 @@ class GetData extends Component
         ];
     }
 
+    // public function mount(AttributeServiceInterface $service)
+    // {
+    //     $this->service = $service;
+    // }
+
     public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
-    public function sortBy(string $field): void
+    public function updatingPaginate(): void
     {
-        $this->sortDirection = $this->sortField === $field
-            ? ($this->sortDirection === 'asc' ? 'desc' : 'asc')
-            : 'asc';
-
-        $this->sortField = $field;
         $this->resetPage();
     }
 
-    public function refreshWithEvent(): void
+    public function searchFilter(string $field): void
+    {
+        $this->searchField = $field;
+        $this->resetPage();
+
+    }
+
+    public function sortBy(string $field ): void
+    {
+
+        $this->sortField = !$field ? 'created_at' : $field;
+        $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+
+        $this->resetPage();
+    }
+
+    /**
+     * Refresh the component and reset pagination.
+     */
+    public function selectPaginate(int $count = 10): void
+    {
+        $this->paginate = $count;
+        $this->resetPage();
+    }
+
+    public function refreshComponent(): void
     {
         $this->resetPage();
         $this->dispatch('reinit-datatable');
     }
 
-    protected function getData(AttributeServiceInterface $service)
+    // resetSearch
+    public function resetSearch(): void
     {
-        // $cacheKey = 'attributes:' . md5(json_encode([
-        //     'search'        => $this->search,
-        //     'sortField'     => $this->sortField,
-        //     'sortDirection' => $this->sortDirection,
-        //     'perPage'       => $this->perPage,
-        // ]));
-
-        return Cache::remember("attrbites", now()->addMinutes(5), function () use ($service) {            return $service->paginateWithFilters([
-                'search'        => $this->search,
-                'sortField'     => $this->sortField,
-                'sortDirection' => $this->sortDirection,
-                'perPage'       => $this->perPage,
-            ]);
-        });
-
+        $this->search = '';
+        $this->resetPage();
     }
 
     public function render(AttributeServiceInterface $service)
     {
+        // $this->service = $service;
+        $filters = [
+            // 'search'        => $this->search,
+            // 'sortField'     => $this->sortField,
+            // 'sortDirection' => $this->sortDirection,
+            // 'paginate'      => $this->paginate,
+        ];
+
+        $data = $service->getAll($filters)
+        ->where($this->searchField, 'like', '%' . $this->search . '%')
+        ->orderBy($this->sortField, $this->sortDirection)
+        ->latest()->paginate($this->paginate);
+        // if ($this->field == 'kitchen') {
+        //     $data = $data->whereHas('kitchen', function ($query) { $query->where('name', 'like', '%' . $this->search . '%'); });
+        // } else if ($this->field == 'warehouse') {
+        //     $data = $data->whereHas('warehouse', function ($query) { $query->where('name', 'like', '%' . $this->search . '%'); });
+        // } else {
+        //     $data = $data->where($this->field, 'like', '%' . $this->search . '%');
+        // }    
+
+        //  $data = $data->latest()->paginate($this->paginate);
+
+
         return view('extra::livewire.attributes.get-data', [
-            'data' => $this->getData($service),
+            'data' => $data,
         ]);
     }
 }

@@ -5,7 +5,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface  AttributeServiceInterface
 {
-    public function paginateWithFilters(array $filters): LengthAwarePaginator;
+    public function getAll(array $filters = []);
 
     public function create(array $data): Attribute;
 
@@ -16,7 +16,5 @@ interface  AttributeServiceInterface
     public function attachValues(Attribute $attribute, array $valueIds): void;
 
     public function detachValue(Attribute $attribute, int $valueId): void;
-
-    public function refreshCache(array $filters): void;
 
 }
