@@ -1,7 +1,7 @@
 {
     "Home"      : "Home",
 
-    "Add"       : "Add :type New",    
+    "Add"       : "Add :type New",
     "Edit"      : "Edit :type",
     "Delete"    : "Delete :type",
     "Save"      : "Save  :type",
@@ -29,8 +29,22 @@
     "Filter By" : "Filter By",
     "Export Data" : "Export Data",
     "Import Data" : "Import Data",
+    "Export PDF" : "Export PDF",
+    "Export Excel" : "Export Excel",
+    "Export CSV" : "Export CSV",
+    "Export PDF to Mail" : "Export PDF to Mail",
+    "Export Excel to Mail" : "Export Excel to Mail",
+    "Export CSV to Mail" : "Export CSV to Mail",
 
-    
+    "Export" : "Export",
+    "Import" : "Import",
+    "Mail" : "Mail",
+    "PDF": "PDF",
+    "Excel": "Excel",
+    "CSV": "CSV",
+    "Print": "Print",
+    "Download": "Download",
+
     "Paginate" : "Paginate",
     "Showing"       : "Showing",
     "of"           : "of",

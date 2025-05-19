@@ -11,14 +11,17 @@
     "No. Values"     : "No. Values",
     "Creator By"     : "Creator By",
     "Created At"     : "Created At",
-    "editor By"     : "editor By",
+    "Editor By"         : "Editor By",
     "Updated At"     : "Updated At",
     "Not Updated Yet" : "Not Updated Yet",
     "Action"         : "Action",
     "Values"         : "Values",
     "No Values"      : "No Values",
     "Attach Values"  : "Attach Values",
-    "Detach Values"  : "Detach Values"
+    "Detach Values"  : "Detach Values",
+    "Show Values"  : "Show Values",
+    "Show Attachments"  : "Show Attachments",
+    "Details"  : "Details"
 
 
 

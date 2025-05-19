@@ -41,6 +41,7 @@ class GetData extends Component
     public function updatingSearch(): void
     {
         $this->resetPage();
+        $this->search = '';
     }
 
     public function updatingPaginate(): void
@@ -84,6 +85,7 @@ class GetData extends Component
     {
         $this->search = '';
         $this->resetPage();
+        $this->searchField = 'attribute';
     }
 
     public function render(AttributeServiceInterface $service)
@@ -106,7 +108,7 @@ class GetData extends Component
         //     $data = $data->whereHas('warehouse', function ($query) { $query->where('name', 'like', '%' . $this->search . '%'); });
         // } else {
         //     $data = $data->where($this->field, 'like', '%' . $this->search . '%');
-        // }    
+        // }
 
         //  $data = $data->latest()->paginate($this->paginate);
 

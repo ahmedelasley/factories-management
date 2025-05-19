@@ -11,7 +11,7 @@
     "No. Values"     : "عدد القيم",
     "Creator By"     : "منشئ بواسطة",
     "Created At"     : "تاريخ الإنشاء",
-    "editor By"     : "محدث بواسطة",
+    "Editor By"     : "محدث بواسطة",
     "Updated At"     : "تاريخ التحديث",
     "Not Updated Yet" : "لم يتم التحديث بعد",
     "Action"         : "الإجراء",
@@ -19,10 +19,8 @@
     "No Values"      : "لا توجد قيم",
     "Attach Values"  : "إرفاق القيم",
     "Detach Values"  : "فصل القيم",
-    "Showing"       : "1عرض",
-    "of"           : "من",
-    "to"           : "إلى",
-    "No"           : "لا",
-    "Search"       : "بحث"
+    "Show Values"  : "عرض القيم",
+    "Show Attachments"  : "عرض المرفقات",
+    "Details"  : "التفاصيل"
 
 }

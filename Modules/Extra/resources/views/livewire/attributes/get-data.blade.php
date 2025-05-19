@@ -1,47 +1,38 @@
 <div class="col-xl-12">
     <div class="card">
-        {{-- <div class="card-header pb-0">
-            <div class="d-flex justify-content-between">
-                <div>
-
-                </div>
-                <div>
-
-                </div>
-                <i class="mdi mdi-dots-horizontal text-gray"></i>
-            </div>
-        </div> --}}
-
         <div class="card-title d-flex justify-content-between flex-wrap">
             <div class="d-flex justify-content-start m-3">
                 <div class="btn-group" role="group">
-                    <x-text-input id="search" wire:model.live="search" type="text" class="form-control w-100 h"  style="height:38px" placeholder="Search..."/>
+                    <x-text-input id="search" wire:model.live="search" type="text" class="form-control w-100 h"  style="height:38px" placeholder="{{ __('Search') }}..." autofocus/>
                     <button type="button" class="btn btn-light  btn-icon" data-placement="top" data-toggle="tooltip" title="{{ __('Clear Search') }}" wire:click="resetSearch">
                         <i class='bx bx-x'></i>
                     </button>
                 </div>
 
                 <div style="margin-inline-start: 10px">
-                    <button type="button" class="btn btn-secondary btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Filter By') }}" >
+                    <button type="button" class="btn btn-secondary btn-icon dropdown" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Filter By') }}" >
                         <i class='bx bx-filter-alt'></i>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item {{ $searchField == 'id' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('id')">Id</a></li>
-                        <li><a class="dropdown-item {{ $searchField == 'attribute' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('attribute')">Attribute</a></li>
+                    <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
+                        <li><a class="dropdown-item {{ $searchField == 'id' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('id')"><b>{{ __('#')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'attribute' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('attribute')"><b>{{ __('Attribute')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'status' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('status')"><b>{{ __('Status')}}</b></a></li>
                         {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('code')">Code</a></li> --}}
                     </ul>
                 </div>
 
                 <div style="margin-inline-start: 10px">
-                    <button type="button" class="btn btn-success btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Export Data') }}" >
+                    <button type="button" class="btn btn-success btn-icon dropdown" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Export Data') }}" >
                         <i class='fa fa-download'></i>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF">Export PDF</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel">Export Excel</a></li>
+                    <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF"><b>{{ __('Export PDF')}}</b></a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel"><b>{{ __('Export Excel')}}</b></a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportCSV"><b>{{ __('Export CSV')}}</b></a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF">Export PDF to Mail</a></li>
-                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel">Export Excel to Mail</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportPDF"><b>{{ __('Export PDF to Mail')}}</b></a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportExcel"><b>{{ __('Export Excel to Mail')}}</b></a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);" wire:click="exportCSV"><b>{{ __('Export CSV to Mail')}}</b></a></li>
                     </ul>
                 </div>
 
@@ -52,28 +43,20 @@
                 </div>
             </div>
             <div class=" m-3" style="margin-inline-start: 10px">
-                <button type="button" class="btn btn-outline-light btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Paginate') }}">
+                <button type="button" class="btn btn-outline-light btn-icon dropdown" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Paginate') }}">
                     {{ $paginate }}
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(10)">10</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(25)">25</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(50)">50</a></li>
-                    <li><a class="dropdown-item" href="javascript:void(0);" wire:click="selectPaginate(100)">100</a></li>
+                <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
+                    <li><a class="dropdown-item {{ $paginate == 10 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(10)">10</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 25 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(25)">25</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 50 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(50)">50</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 75 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(75)">75</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 100 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(100)">100</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 200 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(200)">200</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 500 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(500)">500</a></li>
+                    <li><a class="dropdown-item {{ $paginate == 1000 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(1000)">1000</a></li>
                 </ul>
             </div>
-
-            {{-- <select wire:model.live="paginate" class="form-control w-10 m-3" style="width:75px" id="paginate">
-                <option disabled value="">Select a Paginate...</option>
-                <option value="{{ getSetting('pagination') }}">{{ getSetting('pagination') }} *</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="500">500</option>
-                <option value="1000">1000</option>
-            </select> --}}
         </div>
         <div class="card-body">
             <div class="table-responsive hoverable-table">
@@ -87,14 +70,15 @@
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('editor By')}} <i class="fas fa-sort"></i></a></th>
+                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Editor By')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th>
                             <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
                         </tr>
                     {{-- </thead> --}}
                     <tbody>
                         @foreach($data as $value)
-                            <tr class="fs-4 fw-bold ">
+                            <tr class="fs-18 fw-bold ">
+
                                 <td>{{ $data->firstItem()+$loop->index }}</td>
                                 <td>{{ $value->attribute }}</td>
                                 <td>
@@ -137,20 +121,23 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{-- // Edit --}}
-                                    <button wire:click="edit({{ $value->id }})" class="btn btn-success btn-sm">{{ __('Edit', ['type' => __('Attribute')])}}</button>
-                                    {{-- // Delete --}}
-                                    <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">{{ __('Delete', ['type' => __('Attribute')])}}</button>
-                                    {{-- // Attach Values --}}
-                                    <button wire:click="attachValues({{ $value->id }})" class="btn btn-secondary btn-sm">{{ __('Attach Values')}}</button>
-                                    {{-- // Detach Values --}}
-                                    <button wire:click="detachValues({{ $value->id }})" class="btn btn-secondary btn-sm">{{ __('Detach Values')}}</button>
-                                    {{-- // Toggle Status --}}
-                                    <button wire:click="toggleStatus({{ $value->id }})" class="btn btn-{{ $value->status === App\Enums\Status::cases()[0] ? 'warning' : 'info' }} btn-sm">
-                                        {{ $value->status->btnLabel() }}
-                                    </button>
-
+                                    <div class="dropdown text-center">
+                                        <button type="button" class="btn btn-dark btn-icon dropdown " data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Action') }}">
+                                            <i class='bx bx-dots-vertical'></i>
+                                        </button>
+                                        <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="edit({{ $value->id }})"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="attachValues({{ $value->id }})"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="detachValues({{ $value->id }})"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showValues({{ $value->id }})"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="toggleStatus({{ $value->id }})"> <b><i class="bx bx-swtich"></i> {{ $value->status->btnLabel() }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showDetails({{ $value->id }})"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="delete({{ $value->id }})"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>
+                                        </ul>
+                                    </div>
                                 </td>
+                                </b>
                             </tr>
                         @endforeach
                     </tbody>

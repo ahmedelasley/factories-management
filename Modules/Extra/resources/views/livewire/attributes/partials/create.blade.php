@@ -11,7 +11,7 @@
 
                     <div class="form-group">
                         <label class="main-content-label tx-12 tx-medium">{{ __('Attribute') }}</label>
-                        <input class="form-control" type="text" name="name" wire:model.lazy='attribute' >
+                        <input class="form-control" type="text" name="name" wire:model.live='attribute' autofocus >
                         @error('attribute')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
                     {{-- <div class="form-group">
