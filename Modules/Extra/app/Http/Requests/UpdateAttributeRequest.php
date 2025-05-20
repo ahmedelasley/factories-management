@@ -8,14 +8,20 @@ use App\Enums\Status;
 
 class UpdateAttributeRequest extends FormRequest
 {
+    protected $id;
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
     {
         return [
-            'attribute' => 'sometimes|string|unique:attributes,attribute,' . $this->route('attribute')->id,
-            'status' => ['nullable', new Enum(Status::class)],
+            'attribute' => 'required|string|unique:attributes,attribute,' . $this->id,
+            // 'status' => ['sometimes', new Enum(Status::class)],
         ];
     }
 

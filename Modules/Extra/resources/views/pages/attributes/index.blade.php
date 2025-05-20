@@ -37,9 +37,16 @@
 @section('js')
 <script>
 
-			window.addEventListener('close-modal', event => {
+			window.addEventListener('add-attribute-modal', event => {
 				$('#createModal').modal('toggle');
-				// $('#editModal').modal('toggle');
 			})
+            window.addEventListener('edit-attribute-modal', event => {
+				$('#editModal').modal('toggle');
+			})
+            window.addEventListener('toggle-status-attribute-modal', event => {
+				$('#statusModal').modal('toggle');
+			})
+
+
 </script>
 @endsection

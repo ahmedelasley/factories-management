@@ -1,4 +1,4 @@
-<!-- Create modal -->
+<!-- Start Create modal -->
 <div wire:ignore.self class="modal fade" id="createModal" >
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
@@ -22,7 +22,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn ripple btn-primary" type="button" wire:click="store()">{{ __('Save', ['type' => __('Attribute')]) }}</button>
+                <button class="btn ripple btn-primary" type="button" wire:click="store()">{{ __('Save') }}</button>
                 <button class="btn ripple btn-secondary" data-dismiss="modal" type="button" wire:click="close()">{{ __('Close') }}</button>
             </div>
         </div>

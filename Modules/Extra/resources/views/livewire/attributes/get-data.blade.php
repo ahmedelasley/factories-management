@@ -1,4 +1,7 @@
 <div class="col-xl-12">
+    @livewire('extra::attributes.partials.edit', key('edit_attribute' . now()->timestamp))
+    @livewire('extra::attributes.partials.toggle-status', key('toggle_status_attribute' . now()->timestamp))
+
     <div class="card">
         <div class="card-title d-flex justify-content-between flex-wrap">
             <div class="d-flex justify-content-start m-3">
@@ -126,11 +129,12 @@
                                             <i class='bx bx-dots-vertical'></i>
                                         </button>
                                         <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="edit({{ $value->id }})"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
+                                            {{-- @livewire('extra::attributes.partials.edit', ['value' => $value], key($value->id)) --}}
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click="attachValues({{ $value->id }})"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click="detachValues({{ $value->id }})"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showValues({{ $value->id }})"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="toggleStatus({{ $value->id }})"> <b><i class="bx bx-swtich"></i> {{ $value->status->btnLabel() }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-swtich"></i> {{ $value->status->btnLabel() }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showDetails({{ $value->id }})"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
                                             <div class="dropdown-divider"></div>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click="delete({{ $value->id }})"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>

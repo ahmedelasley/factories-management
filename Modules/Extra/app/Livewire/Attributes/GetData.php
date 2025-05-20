@@ -23,6 +23,8 @@ class GetData extends Component
 
     protected $listeners = [
         'refreshData' => 'refreshComponent',
+        'editAttribute' => '$refresh',
+
     ];
 
     protected function queryString(): array

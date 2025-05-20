@@ -9,8 +9,9 @@ use Modules\Extra\Livewire\Attributes\GetData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Modules\Extra\Http\Requests\UpdateAttributeRequest;
 use Modules\Extra\Interfaces\AttributeServiceInterface;
+use App\Enums\Status;
 
-class Edit extends Component
+class ToggleStatus extends Component
 {
 
     /**
@@ -19,9 +20,11 @@ class Edit extends Component
     public $model;    
     
     public string $attribute;
+    public $status;
+    // public $status;
     
-    protected $listeners = ['edit_attribute'];
-    public function edit_attribute($id)
+    protected $listeners = ['toggle_status_attribute'];
+    public function toggle_status_attribute($id)
     {
         $this->model = Attribute::find($id);
     
@@ -34,57 +37,36 @@ class Edit extends Component
         }
     
         // Set the properties
-        $this->attribute     = $this->model->attribute; 
+        $this->attribute     = $this->model->attribute;
+        $this->status     = $this->model->status; 
     
         // Reset validation and errors
         $this->resetValidation();
         $this->resetErrorBag();
     
         // Open modal
-        $this->dispatch('edit-attribute-modal');
+        $this->dispatch('toggle-status-attribute-modal');
     }
 
-
-    /**
-     * قواعد التحقق باستخدام FormRequest.
-     */
-    protected function rules(): array
-    {
-        // return (new UpdateAttributeRequest())->rules();
-        return (new UpdateAttributeRequest($this->model->id))->rules();
-
-    }
-
-    /**
-     * تحقق فوري عند تحديث أي حقل.
-     */
-    public function updated($field)
-    {
-        $this->validateOnly($field);
-    }
 
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function update(AttributeServiceInterface $service): void
+    public function updateStatus(AttributeServiceInterface $service): void
     {
-        $validated = $this->validate();
 
         $data = [
-            'attribute' => $validated['attribute'],
+            'status' => $this->status === Status::ACTIVE ? Status::INACTIVE : Status::ACTIVE,
         ];
 
         $service->update($this->model, $data);
 
-        // Attribute::create([
-        //     'attribute' => $validated['attribute'],
-        // ]);
 
         // إعادة تعيين البيانات المدخلة
         $this->reset();
 
         // إغلاق المودال من الواجهة
-        $this->dispatch('edit-attribute-modal');
+        $this->dispatch('toggle-status-attribute-modal');
 
         // إعادة تحميل الجدول أو قائمة الخصائص
         $this->dispatch('refreshData')->to(GetData::class);
@@ -114,7 +96,7 @@ class Edit extends Component
      */
     public function render()
     {
-        return view('extra::livewire.attributes.partials.edit');
+        return view('extra::livewire.attributes.partials.toggle-status');
     }
     
 }

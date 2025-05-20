@@ -7,7 +7,7 @@
 
     "Cancel": "إلغاء",
     "Close": "إغلاق",
-    "Update": "تحديث",
+    "Update": "تحديث :type",
     "View": "عرض",
     "Create": "إنشاء",
     "Active": "نشط",
@@ -15,6 +15,8 @@
     "Activate": "تفعيل",
     "Deactivate": "إلغاء التفعيل",
     "Unknown": "غير معروف",
+    "Are you sure you want to update the status?": "هل أنت متأكد أنك تريد تحديث الحالة؟",
+    "This action will change the status of": "هذا الإجراء سيغير حالة :type",
 
     "Clear Search": "مسح البحث",
     "Search Placeholder": "بحث في :type",

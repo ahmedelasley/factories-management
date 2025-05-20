@@ -51,7 +51,7 @@ class Create extends Component
         $this->reset();
 
         // إغلاق المودال من الواجهة
-        $this->dispatch('close-modal');
+        $this->dispatch('add-attribute-modal');
 
         // إعادة تحميل الجدول أو قائمة الخصائص
         $this->dispatch('refreshData')->to(GetData::class);
