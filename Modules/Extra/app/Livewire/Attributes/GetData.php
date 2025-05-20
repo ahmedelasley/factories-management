@@ -17,13 +17,17 @@ class GetData extends Component
     public string $sortField = 'created_at';
     public string $sortDirection = 'desc';
     public int $paginate = 10;
+    public int $page = 1;
+
 
     // /** @var AttributeServiceInterface */
     public $service;
 
     protected $listeners = [
         'refreshData' => 'refreshComponent',
-        'editAttribute' => '$refresh',
+        'edit_attribute' => '$refresh',
+        'toggle_status_attribute' => '$refresh',
+        'delete_attribute' => '$refresh',
 
     ];
 

@@ -3,11 +3,11 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
-                <h6 class="modal-title">{{ __('Edit', ['type' => __('attribute')]) }}</h6>
+                <h6 class="modal-title">{{ __('Edit', ['type' => __('attribute')] ) }}</h6>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button" wire:click="close()"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form id="form" >
+                <form id="form">
 
                     <div class="form-group">
                         <label class="main-content-label tx-12 tx-medium">{{ __('Attribute') }}</label>
@@ -22,7 +22,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn ripple btn-success" type="button" wire:click="update()">{{ __('Update') }}</button>
+                <button class="btn ripple btn-success" type="button" wire:loading.attr="disabled" wire:target="submit"  wire:click="submit()">
+                    {{ __('Update', ['type' => __('attribute')] ) }}
+                    <span wire:loading wire:target="submit" class="spinner-border spinner-border-sm text-white" role="status">
+                </button>
                 <button class="btn ripple btn-secondary" data-dismiss="modal" type="button" wire:click="close()">{{ __('Close') }}</button>
             </div>
         </div>

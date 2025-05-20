@@ -33,7 +33,7 @@ class Create extends Component
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function store(AttributeServiceInterface $service): void
+    public function submit(AttributeServiceInterface $service): void
     {
         $validated = $this->validate();
 
@@ -51,7 +51,7 @@ class Create extends Component
         $this->reset();
 
         // إغلاق المودال من الواجهة
-        $this->dispatch('add-attribute-modal');
+        $this->dispatch('create-attribute-modal');
 
         // إعادة تحميل الجدول أو قائمة الخصائص
         $this->dispatch('refreshData')->to(GetData::class);

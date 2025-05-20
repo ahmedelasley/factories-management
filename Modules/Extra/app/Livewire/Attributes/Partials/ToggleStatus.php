@@ -52,7 +52,7 @@ class ToggleStatus extends Component
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function updateStatus(AttributeServiceInterface $service): void
+    public function submit(AttributeServiceInterface $service): void
     {
 
         $data = [

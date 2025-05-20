@@ -15,9 +15,12 @@
     "Activate": "تفعيل",
     "Deactivate": "إلغاء التفعيل",
     "Unknown": "غير معروف",
+    "Yes": "نعم",
+    "No": "لا",
     "Are you sure you want to update the status?": "هل أنت متأكد أنك تريد تحديث الحالة؟",
     "This action will change the status of": "هذا الإجراء سيغير حالة :type",
-
+    "Are you sure you want to Delete ?": "هل أنت متأكد أنك تريد حذف :type؟",
+    "Once you delete this item, there is no going back. Please be certain." : "بمجرد حذف هذا العنصر، لا يوجد عودة. يرجى التأكد.",
     "Clear Search": "مسح البحث",
     "Search Placeholder": "بحث في :type",
     "Search Results": "نتائج البحث لـ :type",

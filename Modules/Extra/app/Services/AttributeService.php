@@ -28,6 +28,13 @@ class AttributeService implements AttributeServiceInterface
         return $attribute;
     }
 
+    public function delete(Attribute $attribute): void
+    {
+        $attribute->delete();
+        // return $attribute;
+    }
+
+
     public function deleteWithDetach(Attribute $attribute): void
     {
         $attribute->values()->detach();

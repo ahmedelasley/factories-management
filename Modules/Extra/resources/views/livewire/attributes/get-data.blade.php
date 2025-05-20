@@ -1,7 +1,4 @@
 <div class="col-xl-12">
-    @livewire('extra::attributes.partials.edit', key('edit_attribute' . now()->timestamp))
-    @livewire('extra::attributes.partials.toggle-status', key('toggle_status_attribute' . now()->timestamp))
-
     <div class="card">
         <div class="card-title d-flex justify-content-between flex-wrap">
             <div class="d-flex justify-content-start m-3">
@@ -47,9 +44,9 @@
             </div>
             <div class=" m-3" style="margin-inline-start: 10px">
                 <button type="button" class="btn btn-outline-light btn-icon dropdown" data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Paginate') }}">
-                    {{ $paginate }}
+                    <b>{{ $paginate }}</b>
                 </button>
-                <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
+                <ul class="dropdown-menu table-bordered table-striped table-hover text-bold text-md-wrap">
                     <li><a class="dropdown-item {{ $paginate == 10 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(10)">10</a></li>
                     <li><a class="dropdown-item {{ $paginate == 25 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(25)">25</a></li>
                     <li><a class="dropdown-item {{ $paginate == 50 ? 'active' : '' }}" href="javascript:void(0);" wire:click="selectPaginate(50)">50</a></li>
@@ -65,25 +62,24 @@
             <div class="table-responsive hoverable-table">
                 <table id="" class="table table-striped table-bordered table-hover text-md-wrap text-center" >
                     {{-- <thead> --}}
-                        <tr class="bg-dark fs-14 text-bold text-white">
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')"># <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('attribute')">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Values')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('No. Values')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Editor By')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th>
-                            <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
+                        <tr class="bg-dark fs-14 text-bold text-white  text-center">
+                            <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')" wire:key="#"># <i class="fas fa-sort"></i></a></th>
+                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('attribute')" wire:key="Attribute">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="Values">{{ __('Values')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="NumValues">{{ __('No. Values')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')" wire:key="Status">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatorBy">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatedAt">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
+                            {{-- <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="EditorBy">{{ __('Editor By')}} <i class="fas fa-sort"></i></a></th> --}}
+                            {{-- <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="UpdatedAt">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th> --}}
+                            <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="Action">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
                         </tr>
                     {{-- </thead> --}}
                     <tbody>
                         @foreach($data as $value)
-                            <tr class="fs-18 fw-bold ">
-
-                                <td>{{ $data->firstItem()+$loop->index }}</td>
-                                <td>{{ $value->attribute }}</td>
+                            <tr class="fs-18 fw-bold">
+                                <th><b>{{ $data->firstItem()+$loop->index }}</b></th>
+                                <th><b>{{ $value->attribute }}</b></th>
                                 <td>
                                     @forelse ($value->values as $item)
                                         <span class="badge badge-primary">{{ $item->value }}</span>
@@ -91,23 +87,18 @@
                                         <span class="badge badge-danger">{{ __('No Values')}}</span>
                                     @endforelse
                                 </td>
-                                <td>{{ $value->values_count }}</td>
-                                <td>{{ $value->status->label() }}</td>
-                                <td>
-                                    @if ($value->creator)
-                                        <span class="badge badge-{{ $value->creator->name == __('Unknown') ? 'danger' : 'primary' }}">{{ $value->creator?->name }}</span>
-                                    @else
+
+                                <td><b>{{ $value->values_count }}</b></td>
+                                <td><b>{{ $value->status->label() }}</b></td>
+                                <td><b>{{ $value->creator?->name }}</b>
+                                    {{-- @if ($value->creator) --}}
+                                    {{-- <span class="badge badge-{{ $value->creator?->name == __('Unknown') ? 'danger' : 'primary' }}">{{ $value->creator?->name }}</span> --}}
+                                    {{-- @else
                                         <span class="badge badge-danger">{{ __('Unknown')}}</span>
-                                    @endif
+                                    @endif --}}
                                 </td>
-                                <td>
-                                    @if ($value->created_at)
-                                        <span class="badge badge-primary">{{ $value->created_at }}</span>
-                                    @else
-                                        <span class="badge badge-danger">{{ __('Unknown')}}</span>
-                                    @endif
-                                </td>
-                                <td>
+                                <td>{{ $value?->created_at }}</td>
+                                {{-- <td>
                                     @if ($value->editor)
                                         <span class="badge badge-{{ $value->editor->name == __('Unknown') ? 'danger' : 'success' }}">{{ $value->editor?->name }}</span>
                                     @elseif ($value->updated_at == null)
@@ -122,22 +113,22 @@
                                     @else
                                         <span class="badge badge-success">{{ __('Not Updated Yet')}}</span>
                                     @endif
-                                </td>
-                                <td>
-                                    <div class="dropdown text-center">
+                                </td> --}}
+                                <td class="text-center">
+                                    <div class="dropdown">
                                         <button type="button" class="btn btn-dark btn-icon dropdown " data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Action') }}">
                                             <i class='bx bx-dots-vertical'></i>
                                         </button>
                                         <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
+                                            <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
                                             {{-- @livewire('extra::attributes.partials.edit', ['value' => $value], key($value->id)) --}}
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="attachValues({{ $value->id }})"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="detachValues({{ $value->id }})"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showValues({{ $value->id }})"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li>
+                                            {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="attachValues({{ $value->id }})"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="detachValues({{ $value->id }})"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li> --}}
+                                            <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-swtich"></i> {{ $value->status->btnLabel() }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="showDetails({{ $value->id }})"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
                                             <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="delete({{ $value->id }})"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_attribute', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>
                                         </ul>
                                     </div>
                                 </td>

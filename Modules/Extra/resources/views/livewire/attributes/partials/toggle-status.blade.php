@@ -7,7 +7,7 @@
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button" wire:click="close()"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form id="form" >
+                <form id="form">
                     <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                         {{ __('Are you sure you want to update the status?') }}
                     </h4>
@@ -18,7 +18,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn ripple btn-success" type="button" wire:click="updateStatus()">{{ __('Update', ['type' => __('Status')]) }}</button>
+                <button class="btn ripple btn-primary" type="button" wire:loading.attr="disabled" wire:target="submit" wire:click="submit()">
+                    {{ __('Update', ['type' => __('Status')]) }}
+                    <span wire:loading wire:target="submit" class="spinner-border spinner-border-sm text-white" role="status">
+                </button>
                 <button class="btn ripple btn-secondary" data-dismiss="modal" type="button" wire:click="close()">{{ __('Close') }}</button>
             </div>
         </div>

@@ -15,9 +15,12 @@
     "Activate"  : "Activate",
     "Deactivate": "Deactivate",
     "Unknown"   : "Unknown",
+    "Yes"      : "Yes",
+    "No"       : "No",
     "Are you sure you want to update the status?" : "Are you sure you want to update the status?",
     "This action will change the status of" : "This action will change the status of :type",
-
+    "Are you sure you want to Delete ?" : "Are you sure you want to Delete :type?",
+    "Once you delete this item, there is no going back. Please be certain." : "Once you delete this item, there is no going back. Please be certain.",
     "Claer Search" : "Clear Search",
     "Search Placeholder" : "Search :type",
     "Search Results" : "Search Results for :type",

@@ -16,30 +16,31 @@ class Edit extends Component
     /**
      * خاصية النموذج.
      */
-    public $model;    
-    
+    public $model;
+
     public string $attribute;
-    
+
     protected $listeners = ['edit_attribute'];
+
     public function edit_attribute($id)
     {
         $this->model = Attribute::find($id);
-    
+
         if (!$this->model) {
-            // Alert 
+            // Alert
             LivewireAlert::title(__('Error'))
             ->text(__('Attribute not found.'))
             ->error()
             ->show();
         }
-    
+
         // Set the properties
-        $this->attribute     = $this->model->attribute; 
-    
+        $this->attribute = $this->model->attribute;
+
         // Reset validation and errors
         $this->resetValidation();
         $this->resetErrorBag();
-    
+
         // Open modal
         $this->dispatch('edit-attribute-modal');
     }
@@ -51,7 +52,7 @@ class Edit extends Component
     protected function rules(): array
     {
         // return (new UpdateAttributeRequest())->rules();
-        return (new UpdateAttributeRequest($this->model->id))->rules();
+        return (new UpdateAttributeRequest($this->model?->id))->rules();
 
     }
 
@@ -66,7 +67,7 @@ class Edit extends Component
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function update(AttributeServiceInterface $service): void
+    public function submit(AttributeServiceInterface $service): void
     {
         $validated = $this->validate();
 
@@ -100,11 +101,11 @@ class Edit extends Component
     {
         // Reset form fields
         $this->reset();
-    
+
         // Reset validation errors
         $this->resetValidation();
         $this->resetErrorBag();
-    
+
         // Close modal
         $this->dispatch('refreshData');
     }
@@ -116,5 +117,5 @@ class Edit extends Component
     {
         return view('extra::livewire.attributes.partials.edit');
     }
-    
+
 }

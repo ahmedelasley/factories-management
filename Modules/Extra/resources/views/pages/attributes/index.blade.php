@@ -32,12 +32,15 @@
 <div class="row">
     @livewire('extra::attributes.get-data')
 </div>
+@livewire('extra::attributes.partials.edit', key('edit_attribute' . now()->timestamp ))
+@livewire('extra::attributes.partials.toggle-status', key('toggle_status_attribute' . now()->timestamp))
+@livewire('extra::attributes.partials.delete', key('delete_attribute' . now()->timestamp))
 
 @endsection
 @section('js')
 <script>
 
-			window.addEventListener('add-attribute-modal', event => {
+			window.addEventListener('create-attribute-modal', event => {
 				$('#createModal').modal('toggle');
 			})
             window.addEventListener('edit-attribute-modal', event => {
@@ -45,6 +48,9 @@
 			})
             window.addEventListener('toggle-status-attribute-modal', event => {
 				$('#statusModal').modal('toggle');
+			})
+            window.addEventListener('delete-attribute-modal', event => {
+				$('#deleteModal').modal('toggle');
 			})
 
 
