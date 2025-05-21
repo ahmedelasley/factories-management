@@ -43,12 +43,21 @@ class AttributeService implements AttributeServiceInterface
 
     public function attachValues(Attribute $attribute, array $valueIds): void
     {
-        $attribute->values()->attach($valueIds);
+        // $attribute->values()->attach($valueIds);
+        $attribute->values()->detach();
+
+        // Dispatch event after attaching:
+        event(new \Modules\Extra\Events\AttributeValueAttached($attribute, $valueIds));
     }
 
     public function detachValue(Attribute $attribute, int $valueId): void
     {
         $attribute->values()->detach($valueId);
+    }
+
+    public function detachValues(Attribute $attribute, array $valueIds): void
+    {
+        $attribute->values()->detach($valueIds);
     }
 
 }

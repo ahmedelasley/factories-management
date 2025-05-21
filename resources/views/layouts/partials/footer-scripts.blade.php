@@ -38,3 +38,24 @@
 @livewireScripts
 
 <!-- end::Footer scripts -->
+
+<!-- SweetAlert2 Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    let isRedirecting = false; // Flag to prevent multiple redirects
+    
+    Livewire.hook('request', ({ fail }) => {
+        fail(({ status, preventDefault }) => {
+            if (status === 419) {
+                preventDefault(); // Stop Livewire's default behavior
+                
+                if (!isRedirecting) {
+                    isRedirecting = true; // Set the flag to true
+                    window.location.href = '/login'; // Redirect to login route
+                }
+            }
+        });
+    });
+    </script>

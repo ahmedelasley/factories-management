@@ -53,9 +53,6 @@
         @include('layouts.partials.footer-scripts')
         <!--end::Page Scripts-->
 
-        <!-- SweetAlert2 Script -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     </body>
     <!--end::Body-->
 </html>

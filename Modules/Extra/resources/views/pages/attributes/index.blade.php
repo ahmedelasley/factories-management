@@ -32,9 +32,12 @@
 <div class="row">
     @livewire('extra::attributes.get-data')
 </div>
+@livewire('extra::attributes.partials.show', key('show_attribute' . now()->timestamp ))
 @livewire('extra::attributes.partials.edit', key('edit_attribute' . now()->timestamp ))
 @livewire('extra::attributes.partials.toggle-status', key('toggle_status_attribute' . now()->timestamp))
 @livewire('extra::attributes.partials.delete', key('delete_attribute' . now()->timestamp))
+@livewire('extra::attributes.partials.detach', key('detach_attribute' . now()->timestamp))
+@livewire('extra::attributes.partials.attach', key('attach_attribute' . now()->timestamp))
 
 @endsection
 @section('js')
@@ -42,6 +45,9 @@
 
 			window.addEventListener('create-attribute-modal', event => {
 				$('#createModal').modal('toggle');
+			})
+            window.addEventListener('show-attribute-modal', event => {
+				$('#showModal').modal('toggle');
 			})
             window.addEventListener('edit-attribute-modal', event => {
 				$('#editModal').modal('toggle');
@@ -51,6 +57,12 @@
 			})
             window.addEventListener('delete-attribute-modal', event => {
 				$('#deleteModal').modal('toggle');
+			})
+            window.addEventListener('attach-attribute-modal', event => {
+				$('#attachModal').modal('toggle');
+			})
+            window.addEventListener('detach-attribute-modal', event => {
+				$('#detachModal').modal('toggle');
 			})
 
 

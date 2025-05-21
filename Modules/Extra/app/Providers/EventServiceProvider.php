@@ -3,6 +3,8 @@
 namespace Modules\Extra\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Modules\Extra\Events\AttributeValueAttached;
+use Modules\Extra\Listeners\LogAttributeValueAttach;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -11,8 +13,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<string, array<int, string>>
      */
-    protected $listen = [];
-
+    protected $listen = [
+        AttributeValueAttached::class => [
+            LogAttributeValueAttach::class,
+        ],
+    ];
     /**
      * Indicates if events should be discovered.
      *

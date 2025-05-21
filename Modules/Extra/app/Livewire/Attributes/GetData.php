@@ -25,9 +25,12 @@ class GetData extends Component
 
     protected $listeners = [
         'refreshData' => 'refreshComponent',
+        'show_attribute' => '$refresh',
         'edit_attribute' => '$refresh',
         'toggle_status_attribute' => '$refresh',
         'delete_attribute' => '$refresh',
+        'attach_attribute' => '$refresh',
+        'detach_attribute' => '$refresh',       
 
     ];
 

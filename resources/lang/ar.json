@@ -9,6 +9,9 @@
     "Close": "إغلاق",
     "Update": "تحديث :type",
     "View": "عرض",
+    "Attach": "إرفاق",
+    "Detach": "فك الارتباط",
+
     "Create": "إنشاء",
     "Active": "نشط",
     "Inactive": "غير نشط",
@@ -21,6 +24,10 @@
     "This action will change the status of": "هذا الإجراء سيغير حالة :type",
     "Are you sure you want to Delete ?": "هل أنت متأكد أنك تريد حذف :type؟",
     "Once you delete this item, there is no going back. Please be certain." : "بمجرد حذف هذا العنصر، لا يوجد عودة. يرجى التأكد.",
+    
+    "Select the items you want to attach.": "اختر العناصر التي تريد إرفاقها.",
+    "Are you sure you want to Detach ?": "هل أنت متأكد أنك تريد فك الارتباط؟",
+
     "Clear Search": "مسح البحث",
     "Search Placeholder": "بحث في :type",
     "Search Results": "نتائج البحث لـ :type",

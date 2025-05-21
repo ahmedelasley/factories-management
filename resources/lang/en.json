@@ -9,6 +9,8 @@
     "Cancel"    : "Cancel",
     "Close"     : "Close",
     "View"      : "View",
+    "Attach"    : "Attach",
+    "Detach"    : "Detach",
     "Create"    : "Create",
     "Active"    : "Active",
     "Inactive"  : "Inactive",
@@ -21,6 +23,13 @@
     "This action will change the status of" : "This action will change the status of :type",
     "Are you sure you want to Delete ?" : "Are you sure you want to Delete :type?",
     "Once you delete this item, there is no going back. Please be certain." : "Once you delete this item, there is no going back. Please be certain.",
+"Select the items you want to attach." : "Select the items you want to attach.",
+"Are you sure you want to Detach ?  " : "Are you sure you want to Detach ?",
+
+
+
+
+
     "Claer Search" : "Clear Search",
     "Search Placeholder" : "Search :type",
     "Search Results" : "Search Results for :type",

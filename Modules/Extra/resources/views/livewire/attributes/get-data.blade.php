@@ -89,7 +89,9 @@
                                 </td>
 
                                 <td><b>{{ $value->values_count }}</b></td>
-                                <td><b>{{ $value->status->label() }}</b></td>
+                                <td>
+                                    <h6 class="{{ $value->status?->textColor() }}"> <div class="dot-label {{ $value->status?->bgColor() }} ml-1" ></div><b>{{ $value->status?->label() }}</b></h6>
+                                </td>
                                 <td><b>{{ $value->creator?->name }}</b>
                                     {{-- @if ($value->creator) --}}
                                     {{-- <span class="badge badge-{{ $value->creator?->name == __('Unknown') ? 'danger' : 'primary' }}">{{ $value->creator?->name }}</span> --}}
@@ -120,13 +122,13 @@
                                             <i class='bx bx-dots-vertical'></i>
                                         </button>
                                         <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
-                                            <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('show_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
                                             <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
-                                            {{-- @livewire('extra::attributes.partials.edit', ['value' => $value], key($value->id)) --}}
-                                            {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="attachValues({{ $value->id }})"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click="detachValues({{ $value->id }})"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li> --}}
-                                            <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-swtich"></i> {{ $value->status->btnLabel() }}</b></a></li>
+
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('attach_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('detach_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li>
+                                            {{-- <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li> --}}
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_attribute', { id: {{ $value->id }} })"> <b><i class="{{ $value->status->icon() }}"></i> {{ $value->status->btnLabel() }}</b></a></li>
                                             <div class="dropdown-divider"></div>
                                             <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_attribute', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>
                                         </ul>
