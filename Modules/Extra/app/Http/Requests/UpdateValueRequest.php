@@ -3,18 +3,21 @@
 namespace Modules\Extra\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
-use App\Enums\Status;
 class UpdateValueRequest extends FormRequest
 {
+    protected $id;
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      */
     public function rules(): array
     {
         return [
-            'value' => 'sometimes|string|unique:values,value,' . $this->route('value')->id,
-            'status' => ['nullable', new Enum(Status::class)],
+            'value' => 'required|string|unique:values,value,' . $this->id,
         ];
     }
 

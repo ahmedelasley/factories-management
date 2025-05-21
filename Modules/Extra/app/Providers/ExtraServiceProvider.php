@@ -11,6 +11,8 @@ use Modules\Extra\Interfaces\AttributeServiceInterface;
 use Modules\Extra\Services\AttributeService;
 use Modules\Extra\Models\Attribute;
 use Modules\Extra\Models\Value;
+use Modules\Extra\Interfaces\ValueServiceInterface;
+use Modules\Extra\Services\ValueService;
 use Modules\Extra\Models\Category;
 use Modules\Extra\Models\Attachment;
 
@@ -69,6 +71,7 @@ class ExtraServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(AttributeServiceInterface::class, AttributeService::class);
+        $this->app->bind(ValueServiceInterface::class, ValueService::class);
 
     }
 

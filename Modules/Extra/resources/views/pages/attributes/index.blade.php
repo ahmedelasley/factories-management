@@ -16,7 +16,7 @@
         <select name="" id="" class="nice-select custom-select select2" style="margin-top: -40px;border: none;">
             <a href="{{ route('extras.index')}}"><option value="">{{ __('Categories') }}</option></a>
             <a href="{{ route('attributes.index')}}"><option value="" selected>{{ __('Attributes') }} </option><i class="angle fe fe-chevron-down" style="display: block"></i></a>
-            <a href="{{ route('extras.index')}}"><option value="">{{ __('Values') }}</option></a>
+            <a href="{{ route('values.index')}}"><option value="">{{ __('Values') }}</option></a>
             <a href="{{ route('extras.index')}}"><option value="">{{ __('Attachments') }}</option></a>
         </select>
     </li>

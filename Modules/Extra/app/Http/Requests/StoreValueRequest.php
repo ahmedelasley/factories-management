@@ -14,7 +14,7 @@ class StoreValueRequest extends FormRequest
     {
         return [
             'value' => 'required|string|unique:values,value',
-            'status' => ['nullable', new Enum(Status::class)],
+            // 'status' => ['nullable', new Enum(Status::class)],
         ];
     }
 

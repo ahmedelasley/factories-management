@@ -13,9 +13,8 @@
                     </h4>
 
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">
-                        {{ __('This action will change the status of', ['type' => __('Attribute')]) }} <strong>{{ $attribute }}</strong> {{ __('to') }} <strong>{{ $status?->swapBtnLabel() }}</strong>.
+                        {{ __('This action will change the status of', ['type' => __('Value')]) }} <strong>{{ $value }}</strong> {{ __('to') }} <strong>{{ $status == "Active" ? __('Active') : __('Inactive') }}</strong>.
                     </p>
-
                 </form>
             </div>
             <div class="modal-footer">

@@ -48,27 +48,4 @@ class Attribute extends Model
                     ->withPivot('status', 'creator_type', 'creator_id', 'editor_type', 'editor_id');
     }
 
-
-    // Scopes
-    // public function scopeFilter($query, array $filters)
-    // {
-    //     $allowedSortFields = ['attribute', 'status', 'created_at', 'updated_at'];
-
-    //     $sortField = in_array($filters['sortField'] ?? '', $allowedSortFields)
-    //         ? $filters['sortField']
-    //         : 'created_at';
-
-    //     $sortDirection = in_array(strtolower($filters['sortDirection'] ?? 'asc'), ['asc', 'desc'])
-    //         ? strtolower($filters['sortDirection'])
-    //         : 'asc';
-
-    //     return $query
-    //         ->when($filters['search'] ?? null, fn($q, $search) =>
-    //             $q->where('attribute', 'like', "%$search%")
-    //         )
-    //         ->orderBy($sortField, $sortDirection);
-    // }
-
-
-
 }

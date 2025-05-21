@@ -15,7 +15,7 @@
                     </button>
                     <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
                         <li><a class="dropdown-item {{ $searchField == 'id' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('id')"><b>{{ __('#')}}</b></a></li>
-                        <li><a class="dropdown-item {{ $searchField == 'attribute' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('attribute')"><b>{{ __('Attribute')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'value' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('value')"><b>{{ __('Value')}}</b></a></li>
                         <li><a class="dropdown-item {{ $searchField == 'status' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('status')"><b>{{ __('Status')}}</b></a></li>
                         {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('code')">Code</a></li> --}}
                     </ul>
@@ -64,14 +64,11 @@
                     {{-- <thead> --}}
                         <tr class="bg-dark fs-14 text-bold text-white  text-center">
                             <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')" wire:key="#"># <i class="fas fa-sort"></i></a></th>
-                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('attribute')" wire:key="Attribute">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
-                            <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="Values">{{ __('Values')}} <i class="fas fa-sort"></i></a></th>
-                            <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="NumValues">{{ __('No. Values')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('value')" wire:key="value">{{ __('Value')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')" wire:key="Status">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatorBy">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatedAt">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
-                            {{-- <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="EditorBy">{{ __('Editor By')}} <i class="fas fa-sort"></i></a></th> --}}
-                            {{-- <th><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="UpdatedAt">{{ __('Updated At')}} <i class="fas fa-sort"></i></a></th> --}}
                             <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="Action">{{ __('Action')}} <i class="fas fa-sort"></i></a></th>
                         </tr>
                     {{-- </thead> --}}
@@ -79,58 +76,35 @@
                         @foreach($data as $value)
                             <tr class="fs-18 fw-bold">
                                 <th><b>{{ $data->firstItem()+$loop->index }}</b></th>
-                                <th><b>{{ $value->attribute }}</b></th>
+                                <th><b>{{ $value->value }}</b></th>
+                                {{-- <th><b>{{ $value->value }}</b></th> --}}
                                 <td>
-                                    @forelse ($value->values as $item)
-                                        <span class="badge badge-primary">{{ $item->value }}</span>
+                                    @forelse ($value->attributes as $item)
+                                        <span class="badge badge-primary">{{ $item->attribute }}</span>
                                     @empty
-                                        <span class="badge badge-danger">{{ __('No Values')}}</span>
+                                        <span class="badge badge-danger">{{ __('No Attributes')}}</span>
                                     @endforelse
                                 </td>
 
-                                <td><b>{{ $value->values_count }}</b></td>
+                                {{-- <td><b>{{ $value->values_count }}</b></td> --}}
                                 <td>
                                     <h6 class="{{ $value->status?->textColor() }}"> <div class="dot-label {{ $value->status?->bgColor() }} ml-1" ></div><b>{{ $value->status?->label() }}</b></h6>
                                 </td>
                                 <td><b>{{ $value->creator?->name }}</b>
-                                    {{-- @if ($value->creator) --}}
-                                    {{-- <span class="badge badge-{{ $value->creator?->name == __('Unknown') ? 'danger' : 'primary' }}">{{ $value->creator?->name }}</span> --}}
-                                    {{-- @else
-                                        <span class="badge badge-danger">{{ __('Unknown')}}</span>
-                                    @endif --}}
+
                                 </td>
                                 <td>{{ $value?->created_at }}</td>
-                                {{-- <td>
-                                    @if ($value->editor)
-                                        <span class="badge badge-{{ $value->editor->name == __('Unknown') ? 'danger' : 'success' }}">{{ $value->editor?->name }}</span>
-                                    @elseif ($value->updated_at == null)
-                                        <span class="badge badge-success">{{ __('Not Updated Yet')}}</span>
-                                    @else
-                                        <span class="badge badge-danger">{{ __('Unknown')}}</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($value->updated_at)
-                                        <span class="badge badge-primary">{{ $value->updated_at }}</span>
-                                    @else
-                                        <span class="badge badge-success">{{ __('Not Updated Yet')}}</span>
-                                    @endif
-                                </td> --}}
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn btn-dark btn-icon dropdown " data-toggle="dropdown" aria-expanded="false" data-placement="top" data-toggle="tooltip" title="{{ __('Action') }}">
                                             <i class='bx bx-dots-vertical'></i>
                                         </button>
                                         <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('show_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('Attribute')]) }}</b></a></li>
-
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('attach_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-plus"></i> {{ __('Attach Values') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('detach_attribute', { id: {{ $value->id }} })"> <b><i class="bx bx-minus"></i> {{ __('Detach Values') }}</b></a></li>
-                                            {{-- <li><a class="dropdown-item" href="javascript:void(0);"> <b><i class="bx bx-list-ul"></i> {{ __('Show Values') }}</b></a></li> --}}
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_attribute', { id: {{ $value->id }} })"> <b><i class="{{ $value->status->swapIcon() }}"></i> {{ $value->status->swapBtnLabel() }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('show_value', { id: {{ $value->id }} })"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_value', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('value')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_value', { id: {{ $value->id }} })"> <b><i class="{{ $value->status->swapIcon() }}"></i> {{ $value->status->swapBtnLabel() }}</b></a></li>
                                             <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_attribute', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Attribute')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_value', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('value')]) }}</b></a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -141,7 +115,7 @@
                     {{-- <tfoot>
                         <tr class="bg-dark fs-14 text-bold text-white">
                             <th>#</th>
-                            <th>{{ __('Attribute')}}</th>
+                            <th>{{ __('value')}}</th>
                             <th>{{ __('Status')}}</th>
                             <th>{{ __('No. Values')}}</th>
                             <th>{{ __('Creator By')}}</th>
