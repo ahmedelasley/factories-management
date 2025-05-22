@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('extra::index');
+        return view('extra::pages.categories.index');
     }
 
     /**

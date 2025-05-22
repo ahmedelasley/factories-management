@@ -2,21 +2,50 @@
 
 namespace Modules\Extra\Models;
 
+use App\Traits\HasHierarchy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Modules\Extra\Database\Factories\CategoryFactory;
+
+
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, HasHierarchy;
+    protected $table = 'categories';
 
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'parent_id',
+        'type',
+        'status',
+        'creator_id', 'creator_type',
+        'editor_id', 'editor_type',
+    ];
+    protected $casts = [
+        'type' => \App\Enums\Type::class,
+        'status' => \App\Enums\Status::class,
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
 
-    // protected static function newFactory(): CategoryFactory
-    // {
-    //     // return CategoryFactory::new();
-    // }
+    // علاقات Polymorphic
+    public function creator()
+    {
+        return $this->morphTo()->withDefault([
+            'name' => __('Unknown')
+        ]);
+    }
+
+    public function editor()
+    {
+        return $this->morphTo()->withDefault([
+            'name' => __('Unknown')
+        ]);
+    }
+
 }

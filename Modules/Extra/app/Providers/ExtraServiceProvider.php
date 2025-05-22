@@ -14,6 +14,8 @@ use Modules\Extra\Models\Value;
 use Modules\Extra\Interfaces\ValueServiceInterface;
 use Modules\Extra\Services\ValueService;
 use Modules\Extra\Models\Category;
+use Modules\Extra\Interfaces\CategoryServiceInterface;
+use Modules\Extra\Services\CategoryService;
 use Modules\Extra\Models\Attachment;
 
 use Modules\Extra\Observers\AttributeObserver;
@@ -72,6 +74,8 @@ class ExtraServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(AttributeServiceInterface::class, AttributeService::class);
         $this->app->bind(ValueServiceInterface::class, ValueService::class);
+        $this->app->bind(CategoryServiceInterface::class, CategoryService::class);
+
 
     }
 

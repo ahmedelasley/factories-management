@@ -12,6 +12,7 @@ class CategoryObserver
      */
     public function creating(Category $category): void
     {
+        // Set the creator_id and creator_type if the user is authenticated
         if (Auth::check()) {
             $category->creator_id = Auth::id();
             $category->creator_type = Auth::user()::class;
@@ -21,7 +22,10 @@ class CategoryObserver
     /**
      * Handle the Category "created" event.
      */
-    public function created(Category $category): void {}
+    public function created(Category $category): void {
+        $category->slug = str($category->name)->slug();
+        $category->saveQuietly();
+    }
 
     /**
      * Handle the Category "updating" event.

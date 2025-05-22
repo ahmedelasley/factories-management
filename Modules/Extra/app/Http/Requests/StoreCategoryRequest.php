@@ -11,7 +11,14 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'name' => 'required|string|max:255',
+            // 'slug' => 'nullable|string|max:255',
+            'description' => 'nullable|string|max:255',
+            'parent_id' => 'nullable|exists:categories,id',
+            'type' => 'nullable|in:' . implode(',', array_column(\App\Enums\Type::cases(), 'value')),
+            'status' => 'nullable|in:' . implode(',', array_column(\App\Enums\Status::cases(), 'value')),
+        ];
     }
 
     /**

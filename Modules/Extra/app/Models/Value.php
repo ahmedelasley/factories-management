@@ -15,6 +15,7 @@ class Value extends Model
      */
     protected $fillable = [
         'value',
+        'category_id',
         'status',
         'creator_id', 'creator_type',
         'editor_id', 'editor_type',
@@ -47,6 +48,9 @@ class Value extends Model
                     ->withPivot('status', 'creator_type', 'creator_id', 'editor_type', 'editor_id');
     }
 
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
 }
