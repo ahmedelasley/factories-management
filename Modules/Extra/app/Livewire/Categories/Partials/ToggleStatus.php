@@ -12,14 +12,8 @@ use App\Enums\Status;
 class ToggleStatus extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
-
-    public string $value;
-    public $status;
-    // public $status;
+    /** @var Category|null */
+    public $model = null;
 
     protected $listeners = ['toggle_status_category'];
     public function toggle_status_category($id)
@@ -32,11 +26,9 @@ class ToggleStatus extends Component
             ->text(__('Category not found.'))
             ->error()
             ->show();
-        }
 
-        // Set the properties
-        $this->value     = $this->model->value;
-        $this->status     = $this->model->status;
+            return;
+        }
 
         // Reset validation and errors
         $this->resetValidation();

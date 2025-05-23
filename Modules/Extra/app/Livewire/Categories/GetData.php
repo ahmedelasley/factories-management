@@ -5,7 +5,6 @@ namespace Modules\Extra\Livewire\Categories;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Modules\Extra\Interfaces\CategoryServiceInterface;
-use Modules\Extra\Models\Category;
 
 class GetData extends Component
 {
@@ -20,9 +19,6 @@ class GetData extends Component
     public int $paginate = 10;
     public int $page = 1;
 
-
-    // /** @var valueServiceInterface */
-    public $service;
 
     protected $listeners = [
         'refreshData' => 'refreshComponent',
@@ -41,11 +37,6 @@ class GetData extends Component
         ];
     }
 
-    // public function mount(valueServiceInterface $service)
-    // {
-    //     $this->service = $service;
-    // }
-
     public function updatingSearch(): void
     {
         $this->resetPage();
@@ -61,12 +52,10 @@ class GetData extends Component
     {
         $this->searchField = $field;
         $this->resetPage();
-
     }
 
     public function sortBy(string $field ): void
     {
-
         $this->sortField = !$field ? 'created_at' : $field;
         $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
 
@@ -98,28 +87,12 @@ class GetData extends Component
 
     public function render(CategoryServiceInterface $service)
     {
-        // $this->service = $service;
-        $filters = [
-            // 'search'        => $this->search,
-            // 'sortField'     => $this->sortField,
-            // 'sortDirection' => $this->sortDirection,
-            // 'paginate'      => $this->paginate,
-        ];
+        $filters = [];
 
         $data = $service->getAll($filters)
         ->where($this->searchField, 'like', '%' . $this->search . '%')
         ->orderBy($this->sortField, $this->sortDirection)
         ->latest()->paginate($this->paginate);
-        // if ($this->field == 'kitchen') {
-        //     $data = $data->whereHas('kitchen', function ($query) { $query->where('name', 'like', '%' . $this->search . '%'); });
-        // } else if ($this->field == 'warehouse') {
-        //     $data = $data->whereHas('warehouse', function ($query) { $query->where('name', 'like', '%' . $this->search . '%'); });
-        // } else {
-        //     $data = $data->where($this->field, 'like', '%' . $this->search . '%');
-        // }
-
-        //  $data = $data->latest()->paginate($this->paginate);
-
 
         return view('extra::livewire.categories.get-data', [
             'data' => $data,

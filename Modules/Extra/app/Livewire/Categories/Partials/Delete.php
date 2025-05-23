@@ -11,10 +11,8 @@ use Modules\Extra\Interfaces\CategoryServiceInterface;
 class Delete extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+    /** @var Category|null */
+    public $model = null;
 
     public string $name;
 

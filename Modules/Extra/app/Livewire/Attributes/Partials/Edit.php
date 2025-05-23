@@ -12,12 +12,8 @@ use Modules\Extra\Interfaces\AttributeServiceInterface;
 
 class Edit extends Component
 {
-
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
-
+    /** @var Attribute|null */
+    public $model = null;
     public string $attribute;
 
     protected $listeners = ['edit_attribute'];
@@ -32,6 +28,8 @@ class Edit extends Component
             ->text(__('Attribute not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties

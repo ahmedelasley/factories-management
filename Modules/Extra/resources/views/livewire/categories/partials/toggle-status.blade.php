@@ -13,7 +13,7 @@
                     </h4>
 
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400 text-center">
-                        {{ __('This action will change the status of', ['type' => __('Category')]) }} <strong>{{ $value }}</strong> {{ __('to') }} <strong>{{ $status == "Active" ? __('Active') : __('Inactive') }}</strong>.
+                        {{ __('This action will change the status of', ['type' => __('Category')]) }} <strong>{{ $model?->name }}</strong> {{ __('to') }} <strong>{{ $model?->status == "Active" ? __('Active') : __('Inactive') }}</strong>.
                     </p>
                 </form>
             </div>

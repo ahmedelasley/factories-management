@@ -10,31 +10,30 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class Show extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;    
-    
+    /** @var Attribute|null */
+    public $model = null;
+
     public $values = [];
-    
+
     protected $listeners = ['show_attribute'];
     public function show_attribute($id)
     {
         $this->model = Attribute::with('values')->find($id);
-    
+
         if (!$this->model) {
-            // Alert 
+            // Alert
             LivewireAlert::title(__('Error'))
             ->text(__('Attribute not found.'))
             ->error()
             ->show();
+
             return;
         }
-    
+
         // Set the properties
 
         $this->values = $this->model->values;
-    
+
         // Open modal
         $this->dispatch('show-attribute-modal');
     }
@@ -44,11 +43,11 @@ class Show extends Component
     {
         // Reset form fields
         $this->reset();
-    
+
         // Reset validation errors
         $this->resetValidation();
         $this->resetErrorBag();
-    
+
         // Close modal
         $this->dispatch('refreshData');
     }
@@ -60,5 +59,5 @@ class Show extends Component
     {
         return view('extra::livewire.attributes.partials.show');
     }
-    
+
 }

@@ -12,13 +12,12 @@ use App\Enums\Status;
 class ToggleStatus extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+    /** @var Value|null */
+    public $model = null;
 
-    public string $value;
-    public $status;
+
+    // public string $value;
+    // public string $status;
     // public $status;
 
     protected $listeners = ['toggle_status_value'];
@@ -32,11 +31,9 @@ class ToggleStatus extends Component
             ->text(__('Value not found.'))
             ->error()
             ->show();
-        }
 
-        // Set the properties
-        $this->value     = $this->model->value;
-        $this->status     = $this->model->status;
+            return;
+        }
 
         // Reset validation and errors
         $this->resetValidation();

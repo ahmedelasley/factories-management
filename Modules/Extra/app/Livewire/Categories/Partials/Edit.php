@@ -12,10 +12,9 @@ use Modules\Extra\Interfaces\CategoryServiceInterface;
 class Edit extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+
+    /** @var Category|null */
+    public $model = null;
 
     public string $name = '';
     public string $description = '';
@@ -25,7 +24,7 @@ class Edit extends Component
 
     public function edit_category($id)
     {
-        $this->model = Category::find($id);
+        $this->model = Category::findOrFail($id);
 
         if (!$this->model) {
             // Alert
@@ -33,6 +32,8 @@ class Edit extends Component
             ->text(__('Category not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties

@@ -11,10 +11,8 @@ use Modules\Extra\Interfaces\AttributeServiceInterface;
 class Detach extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+    /** @var Attribute|null */
+    public $model = null;
 
     public string $attribute;
 
@@ -29,6 +27,8 @@ class Detach extends Component
             ->text(__('Attribute not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties

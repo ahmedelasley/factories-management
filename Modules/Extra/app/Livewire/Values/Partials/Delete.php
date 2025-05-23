@@ -11,10 +11,9 @@ use Modules\Extra\Interfaces\ValueServiceInterface;
 class Delete extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+
+    /** @var Value|null */
+    public $model = null;
 
     public string $value;
 
@@ -29,6 +28,8 @@ class Delete extends Component
             ->text(__('Value not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties

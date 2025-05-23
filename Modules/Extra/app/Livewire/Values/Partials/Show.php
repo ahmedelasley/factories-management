@@ -9,8 +9,8 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class Show extends Component
 {
 
-    public $model;
-
+    /** @var Value|null */
+    public $model = null;
     public $valueAttributes = [];
 
     protected $listeners = ['show_value'];

@@ -12,11 +12,9 @@ use Modules\Extra\Interfaces\ValueServiceInterface;
 class Edit extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
 
+    /** @var Value|null */
+    public $model = null;
     public string $value;
 
     protected $listeners = ['edit_value'];
@@ -31,6 +29,8 @@ class Edit extends Component
             ->text(__('Value not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties

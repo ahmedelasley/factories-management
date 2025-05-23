@@ -12,10 +12,9 @@ use Modules\Extra\Models\Value;
 class Attach extends Component
 {
 
-    /**
-     * خاصية النموذج.
-     */
-    public $model;
+    /** @var Attribute|null */
+    public $model = null;
+
     public $values = [];
     public $valueIds = [];
     // public string $attribute;
@@ -32,10 +31,12 @@ class Attach extends Component
             ->text(__('Attribute not found.'))
             ->error()
             ->show();
+
+            return;
         }
 
         // Set the properties
-        $this->values = Value::pluck('value', 'id')->all();    
+        $this->values = Value::pluck('value', 'id')->all();
         $this->valueIds = $this->model->values->pluck('id')->toArray();
 
         // Reset validation and errors

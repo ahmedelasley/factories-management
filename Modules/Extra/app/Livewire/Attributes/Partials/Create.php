@@ -3,8 +3,7 @@
 namespace Modules\Extra\Livewire\Attributes\Partials;
 
 use Livewire\Component;
-use Modules\Extra\Models\Attribute;
-use Illuminate\Support\Facades\Cache;
+
 use Modules\Extra\Livewire\Attributes\GetData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Modules\Extra\Http\Requests\StoreAttributeRequest;
@@ -37,15 +36,12 @@ class Create extends Component
     {
         $validated = $this->validate();
 
-        
+
         $data = [
             'attribute' => $validated['attribute'],
         ];
         $service->create($data);
 
-        // Attribute::create([
-        //     'attribute' => $validated['attribute'],
-        // ]);
 
         // إعادة تعيين البيانات المدخلة
         $this->reset();
@@ -66,11 +62,11 @@ class Create extends Component
     {
         // Reset form fields
         $this->reset();
-    
+
         // Reset validation errors
         $this->resetValidation();
         $this->resetErrorBag();
-    
+
         // Close modal
         $this->dispatch('refreshData');
     }

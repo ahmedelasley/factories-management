@@ -9,9 +9,9 @@ use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 class Show extends Component
 {
 
+    /** @var Category|null */
     public $model;
 
-    // public $valueAttributes = [];
 
     protected $listeners = ['show_category'];
     public function show_category($id)
@@ -27,10 +27,6 @@ class Show extends Component
 
             return;
         }
-
-        // Set the properties
-
-        // $this->valueAttributes = $this->model?->attributes;
 
         // Open modal
         $this->dispatch('show-category-modal');
