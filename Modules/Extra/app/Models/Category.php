@@ -3,6 +3,7 @@
 namespace Modules\Extra\Models;
 
 use App\Traits\HasHierarchy;
+use App\Traits\HasCreatorAndEditor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -10,7 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, HasHierarchy;
+    use HasFactory, HasCreatorAndEditor, HasHierarchy;
+
     protected $table = 'categories';
 
     /**
@@ -33,19 +35,5 @@ class Category extends Model
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
-    // علاقات Polymorphic
-    public function creator()
-    {
-        return $this->morphTo()->withDefault([
-            'name' => __('Unknown')
-        ]);
-    }
-
-    public function editor()
-    {
-        return $this->morphTo()->withDefault([
-            'name' => __('Unknown')
-        ]);
-    }
 
 }

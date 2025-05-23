@@ -2,13 +2,14 @@
 
 namespace Modules\Extra\Models;
 
+use App\Traits\HasCreatorAndEditor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Extra\Database\Factories\ValueFactory;
 
 class Value extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCreatorAndEditor;
 
     /**
      * The attributes that are mass assignable.

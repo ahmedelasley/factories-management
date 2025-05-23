@@ -2,6 +2,7 @@
 
 namespace Modules\Extra\Models;
 
+use App\Traits\HasCreatorAndEditor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Extra\Database\Factories\AttachmentFactory;
@@ -9,7 +10,7 @@ use Illuminate\Support\Str;
 
 class Attachment extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCreatorAndEditor;
 
     public $incrementing = false;
     protected $keyType = 'string'; // UUID is stored as string
@@ -44,18 +45,6 @@ class Attachment extends Model
         return $this->morphTo();
     }
 
-    // The creator relationships allow you to define a polymorphic relationship
-    // This means that the creator can be any model
-    public function creator()
-    {
-        return $this->morphTo();
-    }
 
-    // The editor relationships allow you to define a polymorphic relationship
-    // This means that the editor can be any model
-    public function editor()
-    {
-        return $this->morphTo();
-    }
 
 }

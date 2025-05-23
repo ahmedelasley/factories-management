@@ -2,13 +2,14 @@
 
 namespace Modules\Extra\Models;
 
+use App\Traits\HasCreatorAndEditor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Extra\Database\Factories\AttributeFactory;
 
 class Attribute extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCreatorAndEditor;
     protected $table = 'attributes';
 
     /**
@@ -26,20 +27,6 @@ class Attribute extends Model
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
-    // علاقات Polymorphic
-    public function creator()
-    {
-        return $this->morphTo()->withDefault([
-            'name' => __('Unknown')
-        ]);
-    }
-
-    public function editor()
-    {
-        return $this->morphTo()->withDefault([
-            'name' => __('Unknown')
-        ]);
-    }
 
     public function values()
     {
