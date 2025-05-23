@@ -65,7 +65,8 @@
                         <tr class="bg-dark fs-14 text-bold text-white  text-center">
                             <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')" wire:key="#"># <i class="fas fa-sort"></i></a></th>
                             <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('name')" wire:key="value">{{ __('Name')}} <i class="fas fa-sort"></i></a></th>
-                            {{-- <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('Attribute')}} <i class="fas fa-sort"></i></a></th> --}}
+                            <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('Main Category')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('No. Categories')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')" wire:key="Status">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatorBy">{{ __('Creator By')}} <i class="fas fa-sort"></i></a></th>
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="CreatedAt">{{ __('Created At')}} <i class="fas fa-sort"></i></a></th>
@@ -77,6 +78,8 @@
                             <tr class="fs-18 fw-bold">
                                 <th><b>{{ $data->firstItem()+$loop->index }}</b></th>
                                 <th><b>{{ $value->name }}</b></th>
+                                <th><b><span class="badge badge-primary">{{ $value->parent?->name }}</span></b></th>
+                                <th><b>{{ $value->children_count}}</b></th>
                                 {{-- <th><b>{{ $value->value }}</b></th> --}}
                                 {{-- <td>
                                     @forelse ($value->attributes as $item)

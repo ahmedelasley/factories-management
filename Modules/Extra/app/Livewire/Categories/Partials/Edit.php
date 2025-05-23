@@ -17,7 +17,9 @@ class Edit extends Component
      */
     public $model;
 
-    public string $value;
+    public string $name = '';
+    public string $description = '';
+    public ?int $parent_id = null;
 
     protected $listeners = ['edit_category'];
 
@@ -34,7 +36,9 @@ class Edit extends Component
         }
 
         // Set the properties
-        $this->value = $this->model->value;
+        $this->name = $this->model->name;
+        $this->description = $this->model->description;
+        $this->parent_id = $this->model->parent_id;
 
         // Reset validation and errors
         $this->resetValidation();
@@ -69,16 +73,15 @@ class Edit extends Component
     public function submit(CategoryServiceInterface $service): void
     {
         $validated = $this->validate();
+        // dd($validated);
+        if (isset($validated['parent_id']) && $validated['parent_id'] == '') {
+            $validated['parent_id'] = null;
+        }
 
-        $data = [
-            'value' => $validated['value'],
-        ];
 
-        $service->update($this->model, $data);
+        $service->update( $this->model, $validated);
 
-        // value::create([
-        //     'value' => $validated['value'],
-        // ]);
+
 
         // إعادة تعيين البيانات المدخلة
         $this->reset();
@@ -114,7 +117,13 @@ class Edit extends Component
      */
     public function render()
     {
-        return view('extra::livewire.categories.partials.edit');
+        $data = Category::select('id', 'name', 'parent_id')
+        ->where('id', '!=', $this->model?->id)
+        ->with(['parent', 'children'])->get();
+
+        return view('extra::livewire.categories.partials.edit', [
+            'data' => $data,
+        ]);
     }
 
 }

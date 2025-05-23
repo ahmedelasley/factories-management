@@ -11,12 +11,12 @@ class Show extends Component
 
     public $model;
 
-    public $valueAttributes = [];
+    // public $valueAttributes = [];
 
     protected $listeners = ['show_category'];
     public function show_category($id)
     {
-        $this->model = Category::with('attributes')->find($id);
+        $this->model = Category::with('creator', 'editor', 'parent', 'children')->find($id);
 
         if (!$this->model) {
             // Alert
@@ -30,7 +30,7 @@ class Show extends Component
 
         // Set the properties
 
-        $this->valueAttributes = $this->model?->attributes;
+        // $this->valueAttributes = $this->model?->attributes;
 
         // Open modal
         $this->dispatch('show-category-modal');

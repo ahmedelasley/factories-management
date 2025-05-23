@@ -23,8 +23,8 @@ class Category extends Model
         'parent_id',
         'type',
         'status',
-        'creator_id', 'creator_type',
-        'editor_id', 'editor_type',
+        'creator_type','creator_id',
+        'editor_type','editor_id',
     ];
     protected $casts = [
         'type' => \App\Enums\Type::class,

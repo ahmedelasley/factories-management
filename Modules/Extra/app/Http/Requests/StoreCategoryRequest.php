@@ -12,12 +12,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            // 'slug' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string|max:255',
-            'parent_id' => 'nullable|exists:categories,id',
-            'type' => 'nullable|in:' . implode(',', array_column(\App\Enums\Type::cases(), 'value')),
-            'status' => 'nullable|in:' . implode(',', array_column(\App\Enums\Status::cases(), 'value')),
+            'parent_id' => 'nullable|integer|min:1|exists:categories,id',
         ];
     }
 

@@ -8,10 +8,10 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-between form-control" readonly>
-                    <h4 class="">{{ $model?->value }}</h4>
+                    <h4 class="">{{ $model?->name }}</h4>
                     <h6 class="{{ $model?->status->textColor() }}"> <div class="dot-label {{ $model?->status->bgColor() }} ms-5" ></div><span>{{ $model?->status->label() }}</span></h6>
                 </div>
-                <h6 class="mt-3">{{ __('Attributes') }} :
+                {{-- <h6 class="mt-3">{{ __('Attributes') }} :
                     <div class="d-flex justify-content-center flex-wrap">
                         @forelse ($valueAttributes as $item)
                             <span class="badge badge-primary m-1 text-bold">{{ $item->attribute }}</span>
@@ -19,7 +19,7 @@
                             <h6 class="text-muted">{{ __('No Attributes')}}</h6>
                         @endforelse
                     </div>
-                </h6>
+                </h6> --}}
             </div>
             <div class="modal-footer d-flex justify-content-between flex-wrap">
                 <div>

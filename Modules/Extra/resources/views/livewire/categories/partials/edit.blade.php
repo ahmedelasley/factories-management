@@ -19,6 +19,19 @@
                         <input class="form-control" type="text" name="description" wire:model.live='description' >
                         @error('description')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
+                    <div class="form-group">
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Main Category') }}</label>
+                        <select wire:model.live="parent_id" class="form-control" id="parent_id">
+                            <option disabled value="">{{ __('Select a Category...') }}</option>
+                            <option value="" wire:key="category-none">None</option>
+                            @forelse ($data as $value)
+                                <option value="{{ $value->id }}" wire:key="category-{{ $value->id }}" {{ old('parent_id') == $value->id ? 'selected' : '' }} >{{ $value->name }}</option>
+                            @empty
+                                <option value="" wire:key="category-none" >{{ __('No Category') }}</option>
+                            @endforelse
+                        </select>
+                        @error('parent_id')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
