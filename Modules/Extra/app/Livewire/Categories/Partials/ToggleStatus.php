@@ -86,7 +86,7 @@ class ToggleStatus extends Component
      */
     public function render()
     {
-        return view('extra::livewire.values.partials.toggle-status');
+        return view('extra::livewire.suppliers.partials.toggle-status');
     }
 
 }

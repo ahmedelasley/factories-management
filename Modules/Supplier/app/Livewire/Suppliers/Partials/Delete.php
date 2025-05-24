@@ -1,30 +1,30 @@
 <?php
 
-namespace Modules\Extra\Livewire\Categories\Partials;
+namespace Modules\Supplier\Livewire\Suppliers\Partials;
 
 use Livewire\Component;
-use Modules\Extra\Models\Category;
-use Modules\Extra\Livewire\Categories\GetData;
+use Modules\Supplier\Models\Supplier;
+use Modules\Supplier\Livewire\Suppliers\GetData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
-use Modules\Extra\Interfaces\CategoryServiceInterface;
+use Modules\Supplier\Interfaces\SupplierServiceInterface;
 
 class Delete extends Component
 {
 
-    /** @var Category|null */
+    /** @var Supplier|null */
     public $model = null;
 
     public string $name;
 
-    protected $listeners = ['delete_category'];
-    public function delete_category($id)
+    protected $listeners = ['delete_supplier'];
+    public function delete_supplier($id)
     {
-        $this->model = Category::find($id);
+        $this->model = Supplier::find($id);
 
         if (!$this->model) {
             // Alert
             LivewireAlert::title(__('Error'))
-            ->text(__('Category not found.'))
+            ->text(__('Supplier not found.'))
             ->error()
             ->show();
             return;
@@ -38,14 +38,14 @@ class Delete extends Component
         $this->resetErrorBag();
 
         // Open modal
-        $this->dispatch('delete-category-modal');
+        $this->dispatch('delete-supplier-modal');
     }
 
 
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function submit(CategoryServiceInterface $service): void
+    public function submit(SupplierServiceInterface $service): void
     {
 
         $service->delete($this->model);
@@ -54,7 +54,7 @@ class Delete extends Component
         $this->reset();
 
         // إغلاق المودال من الواجهة
-        $this->dispatch('delete-category-modal');
+        $this->dispatch('delete-supplier-modal');
 
         // إعادة تحميل الجدول أو قائمة الخصائص
         $this->dispatch('refreshData')->to(GetData::class);
@@ -84,7 +84,7 @@ class Delete extends Component
      */
     public function render()
     {
-        return view('extra::livewire.suppliers.partials.delete');
+        return view('supplier::livewire.suppliers.partials.delete');
     }
 
 }

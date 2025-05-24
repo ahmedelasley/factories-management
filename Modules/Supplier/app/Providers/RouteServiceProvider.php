@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Extra\Providers;
+namespace Modules\Supplier\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +8,7 @@ use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected string $name = 'Extra';
+    protected string $name = 'Supplier';
 
     /**
      * Called before routes are registered.
@@ -18,7 +18,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         parent::boot();
-
     }
 
     /**
@@ -39,8 +38,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web', 'auth','localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
         ->prefix(LaravelLocalization::setLocale())
-        ->group(module_path($this->name, '/routes/web.php'));
-    }
+        ->group(module_path($this->name, '/routes/web.php'));    }
 
     /**
      * Define the "api" routes for the application.

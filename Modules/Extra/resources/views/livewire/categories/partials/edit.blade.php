@@ -15,7 +15,7 @@
                         @error('name')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label class="main-content-label tx-12 tx-medium">{{ __('modal.Description') }}</label>
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Description') }}</label>
                         <input class="form-control" type="text" name="description" wire:model.live='description' >
                         @error('description')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>

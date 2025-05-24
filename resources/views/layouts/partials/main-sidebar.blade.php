@@ -22,8 +22,9 @@
         <ul class="side-menu">
 
             @include('dashboard::layouts.partials.menu')
-            @include('setting::layouts.partials.menu')
+            @include('supplier::layouts.partials.menu')
             @include('extra::layouts.partials.menu')
+            @include('setting::layouts.partials.menu')
 
             {{-- <x-slides.slide-menu :value="__(key: 'Charts')">
                 <x-slides.slide-item :value="__(key: 'Morris Charts')" :route="route('dashboard')" />
