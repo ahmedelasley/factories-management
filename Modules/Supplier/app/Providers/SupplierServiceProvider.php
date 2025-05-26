@@ -13,6 +13,11 @@ use Modules\Supplier\Services\SupplierService;
 use Modules\Supplier\Interfaces\CompanyServiceInterface;
 use Modules\Supplier\Services\CompanyService;
 
+use Modules\Supplier\Models\Supplier;
+use Modules\Supplier\Models\Company;
+use Modules\Supplier\Observers\SupplierObserver;
+use Modules\Supplier\Observers\CompanyObserver;
+
 class SupplierServiceProvider extends ServiceProvider
 {
     use PathNamespace;
@@ -32,6 +37,10 @@ class SupplierServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+
+        Supplier::observe(SupplierObserver::class);
+        Company::observe(CompanyObserver::class);
+
     }
 
     /**

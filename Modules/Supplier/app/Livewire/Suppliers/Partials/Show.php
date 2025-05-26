@@ -16,7 +16,7 @@ class Show extends Component
     protected $listeners = ['show_supplier'];
     public function show_supplier($id)
     {
-        $this->model = Supplier::with('creator', 'editor', 'parent', 'children')->find($id);
+        $this->model = Supplier::with('creator', 'editor', 'companies')->find($id);
 
         if (!$this->model) {
             // Alert

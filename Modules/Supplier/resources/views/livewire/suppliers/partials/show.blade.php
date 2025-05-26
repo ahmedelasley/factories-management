@@ -7,10 +7,45 @@
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button" wire:click="close()"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <div class="d-flex justify-content-between form-control" readonly>
-                    <h4 class="">{{ $model?->name }}</h4>
-                    <h6 class="{{ $model?->status->textColor() }}"> <div class="dot-label {{ $model?->status->bgColor() }} ms-5" ></div><span>{{ $model?->status->label() }}</span></h6>
+                <div class="position-relative d-flex justify-content-end">
+                    <div class=" position-absolute top-0 end-0 ">
+                        <span class="{{ $model?->status->textColor() }}"> <div class="dot-label {{ $model?->status->bgColor() }} ms-5" ></div><span>{{ $model?->status->label() }}</span></span>
+                    </div>
                 </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Name')" :value="$model?->email"/>
+                </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Email')" :value="$model?->email"/>
+                </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Phone')" :value="$model?->phone"/>
+                </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Address')" :value="$model?->address"/>
+                </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Status')">
+                        <span class="{{ $model?->status->textColor() }}">
+                            <div class="dot-label {{ $model?->status->bgColor() }} ms-5"></div>
+                            <span>{{ $model?->status->label() }}</span>
+                        </span>
+                    </x-text-show>
+                </div>
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Companies')"> 
+                        @forelse ($model?->companies?->pluck('name') ?? collect() as $item)
+                            <span class="badge badge-primary">{{ $item }}</span>
+                        @empty
+                            <span class="badge badge-danger">{{ __('No Companies')}}</span>
+                        @endforelse
+                    </x-text-show>
+                </div>
+
+                <div class="mb-3">
+                    <x-text-show :labelValue="__('Notes')" :value="$model?->notes"/>
+                </div>
+   
                 {{-- <h6 class="mt-3">{{ __('Attributes') }} :
                     <div class="d-flex justify-content-center flex-wrap">
                         @forelse ($valueAttributes as $item)

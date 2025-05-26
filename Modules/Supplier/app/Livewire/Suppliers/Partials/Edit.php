@@ -43,7 +43,7 @@ class Edit extends Component
         $this->email = $this->model->email;
         $this->phone = $this->model->phone;
         $this->address = $this->model->address;
-        $this->notes = $this->model->notes;
+        // $this->notes = $this->model->notes;
 
         // Reset validation and errors
         $this->resetValidation();

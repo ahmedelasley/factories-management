@@ -16,6 +16,9 @@
                     <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap">
                         <li><a class="dropdown-item {{ $searchField == 'id' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('id')"><b>{{ __('#')}}</b></a></li>
                         <li><a class="dropdown-item {{ $searchField == 'name' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('name')"><b>{{ __('Name')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'email' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('email')"><b>{{ __('Email')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'phone' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('phone')"><b>{{ __('Phone')}}</b></a></li>
+                        <li><a class="dropdown-item {{ $searchField == 'address' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('address')"><b>{{ __('Address')}}</b></a></li>
                         <li><a class="dropdown-item {{ $searchField == 'status' ? 'active' : ''}}" href="javascript:void(0);" wire:click="searchFilter('status')"><b>{{ __('Status')}}</b></a></li>
                         {{-- <li><a class="dropdown-item" href="javascript:void(0);" wire:click="searchField('code')">Code</a></li> --}}
                     </ul>
@@ -65,6 +68,9 @@
                         <tr class="bg-dark fs-14 text-bold text-white  text-center">
                             <th class="w-5 "><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('id')" wire:key="#"># <i class="fas fa-sort"></i></a></th>
                             <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('name')" wire:key="value">{{ __('Name')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('email')" wire:key="value">{{ __('Email')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('phone')" wire:key="value">{{ __('Phone')}} <i class="fas fa-sort"></i></a></th>
+                            <th class="w-20"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('address')" wire:key="value">{{ __('Address')}} <i class="fas fa-sort"></i></a></th>
                             {{-- <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('Main Category')}} <i class="fas fa-sort"></i></a></th> --}}
                             {{-- <th class="w-30"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('')" wire:key="attribute">{{ __('No. Categories')}} <i class="fas fa-sort"></i></a></th> --}}
                             <th class="w-10"><a class="d-flex justify-content-between link-no-color" type="button" href="javascript:void(0);" wire:click="sortBy('status')" wire:key="Status">{{ __('Status')}} <i class="fas fa-sort"></i></a></th>
@@ -78,6 +84,9 @@
                             <tr class="fs-18 fw-bold">
                                 <th><b>{{ $data->firstItem()+$loop->index }}</b></th>
                                 <th><b>{{ $value->name }}</b></th>
+                                <th><b>{{ $value->email }}</b></th>
+                                <th><b>{{ $value->phone }}</b></th>
+                                <th><b>{{ $value->address }}</b></th>
                                 {{-- <th><b><span class="badge badge-primary">{{ $value->parent?->name }}</span></b></th> --}}
                                 {{-- <th><b>{{ $value->children_count}}</b></th> --}}
                                 {{-- <th><b>{{ $value->value }}</b></th> --}}
