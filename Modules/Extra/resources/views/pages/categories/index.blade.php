@@ -32,10 +32,10 @@
     <div class="row">
         @livewire('extra::categories.get-data')
     </div>
-    @livewire('extra::categories.partials.show', key('show_category' . now()->timestamp ))
-    @livewire('extra::categories.partials.edit', key('edit_category' . now()->timestamp ))
-    @livewire('extra::categories.partials.toggle-status', key('toggle_status_category' . now()->timestamp))
-    @livewire('extra::categories.partials.delete', key('delete_category' . now()->timestamp))
+    @livewire('extra::categories.partials.show', [], 'show_category_' . now()->timestamp )
+    @livewire('extra::categories.partials.edit', [], 'edit_category_' . now()->timestamp )
+    @livewire('extra::categories.partials.toggle-status', [], 'toggle_status_category_' . now()->timestamp )
+    @livewire('extra::categories.partials.delete', [], 'delete_category_' . now()->timestamp )
 @endsection
 @section('js')
     <script>

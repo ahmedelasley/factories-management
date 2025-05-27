@@ -32,12 +32,12 @@
 <div class="row">
     @livewire('extra::attributes.get-data')
 </div>
-@livewire('extra::attributes.partials.show', key('show_attribute' . now()->timestamp ))
-@livewire('extra::attributes.partials.edit', key('edit_attribute' . now()->timestamp ))
-@livewire('extra::attributes.partials.toggle-status', key('toggle_status_attribute' . now()->timestamp))
-@livewire('extra::attributes.partials.delete', key('delete_attribute' . now()->timestamp))
-@livewire('extra::attributes.partials.detach', key('detach_attribute' . now()->timestamp))
-@livewire('extra::attributes.partials.attach', key('attach_attribute' . now()->timestamp))
+@livewire('extra::attributes.partials.show', [], 'show_attribute_' . now()->timestamp )
+@livewire('extra::attributes.partials.edit', [], 'edit_attribute_' . now()->timestamp )
+@livewire('extra::attributes.partials.toggle-status', [], 'toggle_status_attribute_' . now()->timestamp )
+@livewire('extra::attributes.partials.delete', [], 'delete_attribute_' . now()->timestamp )
+@livewire('extra::attributes.partials.detach', [], 'detach_attribute_' . now()->timestamp )
+@livewire('extra::attributes.partials.attach', [], 'attach_attribute_' . now()->timestamp )
 
 @endsection
 @section('js')

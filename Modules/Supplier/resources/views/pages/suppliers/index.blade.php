@@ -29,10 +29,10 @@
     <div class="row">
         @livewire('supplier::suppliers.get-data')
     </div>
-    @livewire('supplier::suppliers.partials.show', key('show_supplier' . now()->timestamp ))
-    @livewire('supplier::suppliers.partials.edit', key('edit_supplier' . now()->timestamp ))
-    @livewire('supplier::suppliers.partials.toggle-status', key('toggle_status_supplier' . now()->timestamp))
-    @livewire('supplier::suppliers.partials.delete', key('delete_supplier' . now()->timestamp))
+    @livewire('supplier::suppliers.partials.show', [], 'show_supplier_' . now()->timestamp )
+    @livewire('supplier::suppliers.partials.edit', [], 'edit_supplier_' . now()->timestamp )
+    @livewire('supplier::suppliers.partials.toggle-status', [], 'toggle_status_supplier_' . now()->timestamp)
+    @livewire('supplier::suppliers.partials.delete', [], 'delete_supplier_' . now()->timestamp )
 @endsection
 @section('js')
     <script>

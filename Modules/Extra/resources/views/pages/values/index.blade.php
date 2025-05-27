@@ -32,10 +32,10 @@
     <div class="row">
         @livewire('extra::values.get-data')
     </div>
-    @livewire('extra::values.partials.show', key('show_value' . now()->timestamp ))
-    @livewire('extra::values.partials.edit', key('edit_value' . now()->timestamp ))
-    @livewire('extra::values.partials.toggle-status', key('toggle_status_value' . now()->timestamp))
-    @livewire('extra::values.partials.delete', key('delete_value' . now()->timestamp))
+    @livewire('extra::values.partials.show', [], 'show_value_' . now()->timestamp )
+    @livewire('extra::values.partials.edit', [], 'edit_value_' . now()->timestamp )
+    @livewire('extra::values.partials.toggle-status', [], 'toggle_status_value_' . now()->timestamp )
+    @livewire('extra::values.partials.delete', [], 'delete_value_' . now()->timestamp )
 @endsection
 @section('js')
     <script>

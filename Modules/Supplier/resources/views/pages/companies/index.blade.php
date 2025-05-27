@@ -30,10 +30,10 @@
     <div class="row">
         @livewire('supplier::companies.get-data')
     </div>
-    @livewire('supplier::companies.partials.show', key('show_company' . now()->timestamp ))
-    @livewire('supplier::companies.partials.edit', key('edit_company' . now()->timestamp ))
-    @livewire('supplier::companies.partials.toggle-status', key('toggle_status_company' . now()->timestamp))
-    @livewire('supplier::companies.partials.delete', key('delete_company' . now()->timestamp))
+    @livewire('supplier::companies.partials.show', [], 'show_company_' . now()->timestamp )
+    @livewire('supplier::companies.partials.edit', [], 'edit_company_' . now()->timestamp )
+    @livewire('supplier::companies.partials.toggle-status', [], 'toggle_status_company_' . now()->timestamp )
+    @livewire('supplier::companies.partials.delete', [], 'delete_company_' . now()->timestamp )
 @endsection
 @section('js')
     <script>

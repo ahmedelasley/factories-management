@@ -6,5 +6,7 @@
     "Setting": true,
     "Client": true,
     "Extra": true,
-    "Supplier": true
+    "Supplier": true,
+    "RawMaterial": true,
+    "Inventory": true
 }
