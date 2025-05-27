@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2566fd0dcb199ed6f5b3c64f90d29523",
+    "content-hash": "0d1b606b0b125f331e0d9ab3bf1521f1",
     "packages": [
         {
             "name": "brick/math",
@@ -2599,6 +2599,56 @@
                 }
             ],
             "time": "2025-03-24T10:02:05+00:00"
+        },
+        {
+            "name": "morasoft/artisan-ui",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Samir-Gamal/morasoft-artisan-ui.git",
+                "reference": "3cb9968d22ec5a90e95dbcf5801c3922b2944c15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Samir-Gamal/morasoft-artisan-ui/zipball/3cb9968d22ec5a90e95dbcf5801c3922b2944c15",
+                "reference": "3cb9968d22ec5a90e95dbcf5801c3922b2944c15",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^10.0 || ^11.0 || ^12.0",
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Morasoft\\ArtisanUI\\ArtisanUIServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Morasoft\\ArtisanUI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Samir Gamal",
+                    "email": "samirgmal26@gmail.com",
+                    "homepage": "https://github.com/Samir-Gamal",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel package providing a GUI to run artisan commands.",
+            "support": {
+                "issues": "https://github.com/Samir-Gamal/morasoft-artisan-ui/issues",
+                "source": "https://github.com/Samir-Gamal/morasoft-artisan-ui"
+            },
+            "time": "2025-05-27T12:34:24+00:00"
         },
         {
             "name": "nesbot/carbon",
