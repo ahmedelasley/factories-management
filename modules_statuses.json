@@ -8,5 +8,6 @@
     "Extra": true,
     "Supplier": true,
     "Material": true,
-    "Product": true
+    "Product": true,
+    "Production": true
 }
