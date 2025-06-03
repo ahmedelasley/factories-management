@@ -102,11 +102,11 @@
                                             <i class='bx bx-dots-vertical'></i>
                                         </button>
                                         <ul class="dropdown-menu table-bordered table-striped table-hover text-md-wrap fs-18">
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('show_material', { id: {{ $value->id }} })"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_material', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('value')]) }}</b></a></li>
-                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_material', { id: {{ $value->id }} })"> <b><i class="{{ $value->status->swapIcon() }}"></i> {{ $value->status->swapBtnLabel() }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('show_product', { id: {{ $value->id }} })"> <b><i class="bx bx-info-circle"></i> {{ __('Details') }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('edit_product', { id: {{ $value->id }} })"> <b><i class="bx bx-edit"></i> {{ __('Edit', ['type' => __('value')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);" wire:click.prevent="$dispatch('toggle_status_product', { id: {{ $value->id }} })"> <b><i class="{{ $value->status->swapIcon() }}"></i> {{ $value->status->swapBtnLabel() }}</b></a></li>
                                             <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_material', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Material')]) }}</b></a></li>
+                                            <li><a class="dropdown-item" href="javascript:void(0);"  wire:click.prevent="$dispatch('delete_product', { id: {{ $value->id }} })"> <b class="text-danger"><i class="bx bx-trash"></i> {{ __('Delete', ['type' => __('Product')]) }}</b></a></li>
                                         </ul>
                                     </div>
                                 </td>

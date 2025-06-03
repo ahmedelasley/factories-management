@@ -18,7 +18,7 @@ class ToggleStatus extends Component
 
     // public string $value;
     // public string $status;
-    // public $status;
+    public $status;
 
     protected $listeners = ['toggle_status_value'];
     public function toggle_status_value($id)
@@ -34,6 +34,9 @@ class ToggleStatus extends Component
 
             return;
         }
+
+        $this->status = $this->model?->status;
+
 
         // Reset validation and errors
         $this->resetValidation();

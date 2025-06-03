@@ -15,7 +15,7 @@ class ToggleStatus extends Component
     /** @var Material|null */
     public $model = null;
 
-
+    public $status;
 
     protected $listeners = ['toggle_status_material'];
     public function toggle_status_material($id)
@@ -31,6 +31,7 @@ class ToggleStatus extends Component
 
             return;
         }
+        $this->status = $this->model?->status;
 
         // Reset validation and errors
         $this->resetValidation();
@@ -50,7 +51,6 @@ class ToggleStatus extends Component
         $data = [
             'status' => $this->status === Status::ACTIVE ? Status::INACTIVE : Status::ACTIVE,
         ];
-dd($data);
         $service->update($this->model, $data);
 
 

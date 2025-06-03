@@ -10,7 +10,7 @@ interface  MaterialServiceInterface
 
     public function update(Material $material, array $data): Material;
 
-    public function delete(Material $aterial): void;
+    public function delete(Material $material): void;
 
 
 

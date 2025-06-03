@@ -1,58 +1,56 @@
 <?php
 
-namespace Modules\Supplier\Livewire\Suppliers\Partials;
+namespace Modules\Product\Livewire\Products\Partials;
 
 use Livewire\Component;
-use Modules\Supplier\Models\Supplier;
-use Modules\Supplier\Livewire\Suppliers\GetData;
+use Modules\Product\Models\Product;
+use Modules\Product\Livewire\Products\GetData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
-use Modules\Supplier\Interfaces\SupplierServiceInterface;
+use Modules\Product\Interfaces\ProductServiceInterface;
 use App\Enums\Status;
 
 class ToggleStatus extends Component
 {
 
-    /** @var Supplier|null */
+    /** @var Product|null */
     public $model = null;
+
     public $status;
 
-    protected $listeners = ['toggle_status_supplier'];
-    public function toggle_status_supplier($id)
+    protected $listeners = ['toggle_status_product'];
+    public function toggle_status_product($id)
     {
-        $this->model = Supplier::find($id);
+        $this->model = Product::find($id);
 
         if (!$this->model) {
             // Alert
             LivewireAlert::title(__('Error'))
-            ->text(__('Supplier not found.'))
+            ->text(__('Product not found.'))
             ->error()
             ->show();
 
             return;
         }
-
         $this->status = $this->model?->status;
-
 
         // Reset validation and errors
         $this->resetValidation();
         $this->resetErrorBag();
 
         // Open modal
-        $this->dispatch('toggle-status-supplier-modal');
+        $this->dispatch('toggle-status-product-modal');
     }
 
 
     /**
      * حفظ الخاصية الجديدة في قاعدة البيانات.
      */
-    public function submit(SupplierServiceInterface $service): void
+    public function submit(ProductServiceInterface $service): void
     {
 
         $data = [
             'status' => $this->status === Status::ACTIVE ? Status::INACTIVE : Status::ACTIVE,
         ];
-
         $service->update($this->model, $data);
 
 
@@ -60,14 +58,14 @@ class ToggleStatus extends Component
         $this->reset();
 
         // إغلاق المودال من الواجهة
-        $this->dispatch('toggle-status-supplier-modal');
+        $this->dispatch('toggle-status-product-modal');
 
         // إعادة تحميل الجدول أو قائمة الخصائص
         $this->dispatch('refreshData')->to(GetData::class);
 
         // إشعار نجاح
         LivewireAlert::title(__('Success'))
-            ->text(__('Supplier Updated successfully.'))
+            ->text(__('Product Updated successfully.'))
             ->success()
             ->show();
     }
@@ -90,7 +88,7 @@ class ToggleStatus extends Component
      */
     public function render()
     {
-        return view('supplier::livewire.suppliers.partials.toggle-status');
+        return view('product::livewire.products.partials.toggle-status');
     }
 
 }
