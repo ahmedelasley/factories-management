@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Supplier\Providers;
+namespace Modules\Warehouse\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +8,7 @@ use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected string $name = 'Supplier';
+    protected string $name = 'Warehouse';
 
     /**
      * Called before routes are registered.
