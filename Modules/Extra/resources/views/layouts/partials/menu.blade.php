@@ -1,4 +1,4 @@
-<x-slides.slide :value="__(key: 'Extras')"/>
+<x-slides.slide-category :value="__(key: 'Extras')" />
 <x-slides.slide-menu :value="__(key: 'Extras')">
     <x-slides.slide-item :value="__(key: 'Categories')" :route="route('categories.index')" />
     <x-slides.slide-item :value="__(key: 'Attributes')" :route="route('attributes.index')" />

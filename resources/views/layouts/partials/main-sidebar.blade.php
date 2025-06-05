@@ -23,9 +23,12 @@
 
             @include('dashboard::layouts.partials.menu')
             @include('supplier::layouts.partials.menu')
+
+            <x-slides.slide-category :value="__(key: 'Warehouses Management')" />
             @include('warehouse::layouts.partials.menu')
             @include('material::layouts.partials.menu')
             @include('product::layouts.partials.menu')
+
             @include('extra::layouts.partials.menu')
             @include('setting::layouts.partials.menu')
 

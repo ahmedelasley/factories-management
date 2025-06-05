@@ -1,7 +1,7 @@
 <!-- Title -->
 <title>{{ config('app.name', 'Laravel') }}</title>
 <!-- Favicon -->
-<link rel="icon" href="{{URL::asset('assets/back/img/brand/favicon.png')}}" type="image/x-icon"/>
+<link rel="icon" href="{{ URL::asset('assets/back/img/brand/favicon.png') }}" type="image/x-icon"/>
 <!-- Icons css -->
 <link href="{{URL::asset('assets/back/css/icons.css')}}" rel="stylesheet">
 <!--  Custom Scroll bar-->

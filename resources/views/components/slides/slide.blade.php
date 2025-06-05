@@ -2,7 +2,7 @@
 
 @php
     $route = $route ?? 'javascript:void(0);';
-    // $path = $path ?? 'javascript:void(0);';
+    $path = $path ?? 'javascript:void(0);';
     $value = $value ?? 'Slide';
 @endphp
 

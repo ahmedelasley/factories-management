@@ -9,9 +9,6 @@
     "Supplier": true,
     "Material": true,
     "Product": true,
-<<<<<<< HEAD
+    "Warehouse": true,
     "Production": true
-=======
-    "Warehouse": true
->>>>>>> 4a3a16ad287e6c01ee260303620309e140a68f78
 }
