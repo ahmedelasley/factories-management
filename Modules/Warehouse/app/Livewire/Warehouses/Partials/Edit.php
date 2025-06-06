@@ -3,24 +3,33 @@
 namespace Modules\Warehouse\Livewire\Warehouses\Partials;
 
 use Livewire\Component;
-use Modules\Warehouse\Models\Warehouse;
 use Modules\Warehouse\Livewire\Warehouses\GetData;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Modules\Warehouse\Http\Requests\UpdateWarehouseRequest;
 use Modules\Warehouse\Interfaces\WarehouseServiceInterface;
-
+use Modules\Warehouse\Models\Warehouse;
+use Modules\Warehouse\Enums\WarehouseType;
 class Edit extends Component
 {
-
 
     /** @var Warehouse|null */
     public $model = null;
 
     public string $name = '';
-    public string $description = '';
-    public string $storage_unit = '';
-    public string $ingredient_unit = '';
-    public float $conversion_factor = 1;
+    public string $location = '';
+    public float $capacity = 0.0;
+    public bool $is_default = false;
+    public ?string $type = null;
+
+    public bool $hasDefaultWarehouse = false;
+
+    /**
+     * Check if a default warehouse already exists.
+     */
+    protected function checkDefaultWarehouse(): void
+    {
+        $this->hasDefaultWarehouse = Warehouse::where('is_default', true)->exists();
+    }
 
     protected $listeners = ['edit_warehouse'];
 
@@ -40,10 +49,10 @@ class Edit extends Component
 
         // Set the properties
         $this->name = $this->model->name;
-        $this->description = $this->model->description;
-        $this->storage_unit = $this->model->storage_unit;
-        $this->ingredient_unit = $this->model->ingredient_unit;
-        $this->conversion_factor = $this->model->conversion_factor;
+        $this->location = $this->model->location;
+        $this->capacity = $this->model->capacity;
+        $this->is_default = $this->model->is_default;
+        $this->type = $this->model->type?->value;
 
         // Reset validation and errors
         $this->resetValidation();
@@ -78,18 +87,19 @@ class Edit extends Component
     public function submit(WarehouseServiceInterface $service): void
     {
         $validated = $this->validate();
-        // dd($validated);
-        // if (isset($validated['parent_id']) && $validated['parent_id'] == '') {
-        //     $validated['parent_id'] = null;
-        // }
 
+        // Enforce single default warehouse logic
+        // if ($this->is_default && $this->hasDefaultWarehouse) {
+        //     $this->addError('is_default', __('There is already a default warehouse.'));
+        //     return;
+        // }
 
         $service->update( $this->model, $validated);
 
 
 
         // إعادة تعيين البيانات المدخلة
-        $this->reset();
+        $this->resetForm();
 
         // إغلاق المودال من الواجهة
         $this->dispatch('edit-warehouse-modal');
@@ -104,16 +114,22 @@ class Edit extends Component
             ->show();
     }
 
-    public function close()
+    public function resetForm(): void
     {
-        // Reset form fields
-        $this->reset();
-
-        // Reset validation errors
+        $this->reset(['name', 'location', 'capacity', 'is_default', 'type']);
+        $this->type = WarehouseType::cases()[0]->value;
         $this->resetValidation();
         $this->resetErrorBag();
+        $this->checkDefaultWarehouse();
+    }
 
-        // Close modal
+
+   /**
+     * Cancel and reset.
+     */
+    public function close(): void
+    {
+        $this->resetForm();
         $this->dispatch('refreshData');
     }
 
@@ -122,8 +138,12 @@ class Edit extends Component
      */
     public function render()
     {
+        $this->checkDefaultWarehouse();
+        // $this->employees = \App\Models\User::select('id', 'name')->get()->toArray(); // أو أي موديل يمثل الموظفين
 
-        return view('warehouse::livewire.warehouses.partials.edit');
+        return view('warehouse::livewire.warehouses.partials.edit', [
+            'types' => WarehouseType::cases(),
+        ]);
     }
 
 }

@@ -15,27 +15,44 @@
                         @error('name')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label class="main-content-label tx-12 tx-medium">{{ __('Description') }}</label>
-                        <input class="form-control" type="text" name="description" wire:model.live='description' >
-                        @error('description')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label class="main-content-label tx-12 tx-medium">{{ __('Storage Unit') }}</label>
-                        <input class="form-control" type="text" name="storage_unit" wire:model.live='storage_unit' >
-                        @error('storage_unit')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="form-group">
-                        <label class="main-content-label tx-12 tx-medium">{{ __('Ingredient Unit') }}</label>
-                        <input class="form-control" type="text" name="ingredient_unit" wire:model.live='ingredient_unit' >
-                        @error('ingredient_unit')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Warehouse Type') }}</label>
+                        <select class="form-control" wire:model.live="type">
+                            <option value="" selected hidden>{{ __('Select Type') }}</option>
+                            @foreach ($types as $enum)
+                                <option value="{{ $enum->value }}">{{ $enum->label() }}</option>
+                            @endforeach
+                        </select>
+                        @error('type')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label class="main-content-label tx-12 tx-medium">{{ __('Conversion Factor') }}</label>
-                        <input class="form-control" type="text" name="conversion_factor" wire:model.live='conversion_factor' >
-                        @error('conversion_factor')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Location') }}</label>
+                        <input class="form-control" type="text" name="location" wire:model.live='location' >
+                        @error('location')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
-
+                    <div class="form-group">
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Capacity') }}</label>
+                        <input class="form-control" type="text" name="capacity" wire:model.live='capacity' >
+                        @error('capacity')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                    </div>
+                    {{-- <div class="form-group" wire:ignore>
+                        <label class="main-content-label tx-12 tx-medium">{{ __('Employee') }}</label>
+                        <select class="form-control" id="employee-select">
+                            <option value="">{{ __('Select Employee') }}</option>
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('employeeable_id')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                    </div> --}}
+                    @if(!$hasDefaultWarehouse || $is_default)
+                        <div class="form-group">
+                            <div class="check-box">
+                                <input class="" type="checkbox" id="is_default" wire:model.live="is_default">
+                                <label class="form-check-label" for="is_default">{{ __('Default Warehouse') }}</label>
+                            </div>
+                            @error('is_default')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
+                        </div>
+                    @endif
                 </form>
             </div>
             <div class="modal-footer">
@@ -49,3 +66,26 @@
     </div>
 </div>
 <!-- End Edit modal -->
+
+@push('scripts')
+{{-- <script>
+    document.addEventListener('livewire:load', function () {
+        let select = document.getElementById('employee-select');
+
+        const tom = new TomSelect(select, {
+            create: false,
+            placeholder: '🔍 ابحث عن الموظف...',
+        });
+
+        select.addEventListener('change', function () {
+            @this.set('employeeable_id', this.value);
+        });
+
+        Livewire.hook('message.processed', () => {
+            if (!select.tomselect) {
+                new TomSelect(select);
+            }
+        });
+    });
+</script> --}}
+@endpush

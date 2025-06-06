@@ -44,15 +44,15 @@
     </select>
     @error('employeeable_id')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
 </div> --}}
-                    @if (! $hasDefaultWarehouse)
+                @if (!$hasDefaultWarehouse)
                     <div class="form-group">
-                        <div class="form-check">
+                        <div class="check-box">
+                            <input class="" type="checkbox" id="is_default" wire:model.live="is_default">
                             <label class="form-check-label" for="is_default">{{ __('Default Warehouse') }}</label>
-                            <input class="form-check-input" type="checkbox" id="is_default" wire:model.live="is_default">
                         </div>
                         @error('is_default')<span class="bg-danger tx-white d-block px-1 py-1">{{ $message }}</span>@enderror
                     </div>
-                    @endif
+                @endif
                 </form>
             </div>
             <div class="modal-footer">
@@ -68,7 +68,7 @@
 <!-- End Create modal -->
 
 @push('scripts')
-<script>
+{{-- <script>
     document.addEventListener('livewire:load', function () {
         let select = document.getElementById('employee-select');
 
@@ -87,6 +87,6 @@
             }
         });
     });
-</script>
+</script> --}}
 @endpush
 

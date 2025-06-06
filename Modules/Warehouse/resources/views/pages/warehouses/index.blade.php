@@ -3,9 +3,45 @@
 @section('css')
 
 <style>
-.link-no-color:link {
-  color: #fff;
-}
+    .link-no-color:link {
+        color: #fff;
+    }
+    /* .check-box {
+        transform: scale(0);
+    } */
+    .check-box input[type="checkbox"] {
+        position: relative;
+        appearance: none;
+        width: 20px;
+        height: 10px;
+        background: #ccc;
+        border-radius: 10%;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: 0.4s;
+    }
+
+    .check-box input:checked[type="checkbox"] {
+        background: #0162e8;
+    }
+
+    .check-box input[type="checkbox"]::after {
+        position: absolute;
+        content: "";
+        width: 10px;
+        height: 10px;
+        top: 0;
+        left: 0;
+        background: #fff;
+        border-radius: 10%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        transform: scale(1.1);
+        transition: 0.4s;
+    }
+
+    .check-box input:checked[type="checkbox"]::after {
+        left: 100%;
+    }
 </style>
 @endsection
 @section('title-header', __('Warehouses'))

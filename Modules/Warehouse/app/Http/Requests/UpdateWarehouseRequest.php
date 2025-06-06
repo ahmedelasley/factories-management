@@ -28,8 +28,10 @@ class UpdateWarehouseRequest extends FormRequest
             'name' => 'required|string|unique:warehouses,name,' . $this->id,
             'location' => 'nullable|string',
             'capacity' => 'nullable|numeric|min:0|max:999999.9999',
-            'employeeable_type' => 'nullable|string|max:255',
-            'employeeable_id'   => 'nullable|integer|min:1',
+            'is_default' => 'nullable|boolean',
+
+            // 'employeeable_type' => 'nullable|string|max:255',
+            // 'employeeable_id'   => 'nullable|integer|min:1',
             'type' => ['nullable', new Enum(WarehouseType::class)],
         ];
     }
