@@ -4,19 +4,29 @@ namespace Modules\Production\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Modules\Production\Database\Factories\ProductionMachineFactory;
-
+use App\Traits\HasCreatorAndEditor;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class ProductionMachine extends Model
 {
-    use HasFactory;
+    use HasFactory, HasCreatorAndEditor;
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [];
+    protected $table = 'production_machines';
+    protected $fillable = [
+        'production_order_id',
+        'machine_type','machine_id',
+        'hours_used',
+        'status',
+        'creator_type','creator_id',
+        'editor_type','editor_id',
+    ];
 
-    // protected static function newFactory(): ProductionMachineFactory
-    // {
-    //     // return ProductionMachineFactory::new();
-    // }
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
+    public function productionOrder(): HasMany
+    {
+        return $this->hasMany(ProductionOrder::class);
+    }
 }

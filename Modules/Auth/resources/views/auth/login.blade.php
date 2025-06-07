@@ -26,11 +26,11 @@
                                                 <form method="POST" action="{{ route('login') }}">
                                                     @csrf
 													<div class="form-group">
-														<label>Email</label> <input class="form-control" placeholder="Enter your email" type="email" name="email" value="{{old('email')}}" required autofocus autocomplete="username">
+														<label>Email</label> <input class="form-control" placeholder="Enter your email" type="email" name="email" value="{{-- old('email') --}}username@example.com" required autofocus autocomplete="username">
                                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
 													</div>
 													<div class="form-group">
-														<label>Password</label> <input class="form-control" placeholder="Enter your password" type="password" name="password" required autocomplete="current-password">
+														<label>Password</label> <input class="form-control" placeholder="Enter your password" type="password" name="password" value="Pa$$w0rd!" required autocomplete="current-password">
                                                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
 													</div><button class="btn btn-main-primary btn-block">Sign In</button>
 													<div class="row row-xs">

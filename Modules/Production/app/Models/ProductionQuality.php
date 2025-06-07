@@ -6,24 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\HasCreatorAndEditor;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-class ProductionMaterial extends Model
+class ProductionQuality extends Model
 {
     use HasFactory, HasCreatorAndEditor;
 
-    protected $table    = 'production_materials';
+    protected $table = 'production_qualities';
     protected $fillable = [
         'production_order_id',
-        'material_type','material_id',
-        'quantity_used',
+        'employee_type','employee_id',
         'date',
+        'notes',
         'status',
         'creator_type','creator_id',
         'editor_type','editor_id',
     ];
 
     protected $casts = [
-         'created_at' => 'datetime:Y-m-d H:i:s',
-         'updated_at' => 'datetime:Y-m-d H:i:s',
+        'status' => \Modules\Production\Enums\ProductionQualityStatus::class,
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
     public function productionOrder(): HasMany

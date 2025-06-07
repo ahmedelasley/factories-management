@@ -12,20 +12,20 @@ class GetData extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public string $search = '';
-    public string $searchField = 'name';
-    public string $sortField = 'created_at';
+    public string $search        = '';
+    public string $searchField   = 'name';
+    public string $sortField     = 'created_at';
     public string $sortDirection = 'desc';
-    public int $paginate = 10;
-    public int $page = 1;
+    public int $paginate         = 10;
+    public int $page             = 1;
 
 
     protected $listeners = [
-        'refreshData' => 'refreshComponent',
-        'show_warehouse' => '$refresh',
-        'edit_warehouse' => '$refresh',
+        'refreshData'             => 'refreshComponent',
+        'show_warehouse'          => '$refresh',
+        'edit_warehouse'          => '$refresh',
         'toggle_status_warehouse' => '$refresh',
-        'detach_warehouse' => '$refresh',
+        'detach_warehouse'        => '$refresh',
 
     ];
 
@@ -56,13 +56,13 @@ class GetData extends Component
 
     public function sortBy(string $field ): void
     {
-        $this->sortField = !$field ? 'created_at' : $field;
+        $this->sortField     = !$field ? 'created_at' : $field;
         $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
 
         $this->resetPage();
     }
 
-    /**
+      /**
      * Refresh the component and reset pagination.
      */
     public function selectPaginate(int $count = 10): void
@@ -77,7 +77,7 @@ class GetData extends Component
         $this->dispatch('reinit-datatable');
     }
 
-    // resetSearch
+      // resetSearch
     public function resetSearch(): void
     {
         $this->search = '';
