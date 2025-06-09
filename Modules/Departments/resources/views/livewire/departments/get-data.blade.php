@@ -1,3 +1,7 @@
 <div>
-    <h3>The <code>GetData</code> livewire component is loaded from the <code>Departments</code> module.</h3>
+    <ul class="list-group">
+        @foreach ($departments as $department)
+            @include('departments::livewire.departments.partials.tree-node', ['department' => $department])
+        @endforeach
+    </ul>
 </div>

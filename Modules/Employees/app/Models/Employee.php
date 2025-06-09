@@ -17,8 +17,8 @@ class Employee extends Model
     protected $fillable = [
         'name', 'email', 'phone', 'gender', 'national_id',
         'position_id', 'department_id', 'hire_date', 'photo', 'status',
-        'creator_type','creator_id',
-        'editor_type','editor_id',
+        // 'creator_type','creator_id',
+        // 'editor_type','editor_id',
 
     ];
 
