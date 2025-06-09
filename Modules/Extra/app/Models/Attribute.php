@@ -2,14 +2,14 @@
 
 namespace Modules\Extra\Models;
 
-use App\Traits\HasCreatorAndEditor;
+use App\Traits\HasUserActions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\Extra\Database\Factories\AttributeFactory;
 
 class Attribute extends Model
 {
-    use HasFactory, HasCreatorAndEditor;
+    use HasFactory, HasUserActions;
     protected $table = 'attributes';
 
     /**

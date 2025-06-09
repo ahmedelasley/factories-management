@@ -2,14 +2,14 @@
 
 namespace Modules\Material\Models;
 
-use App\Traits\HasCreatorAndEditor;
+use App\Traits\HasUserActions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Material extends Model
 {
-    use HasFactory, HasCreatorAndEditor;
+    use HasFactory, HasUserActions;
 
     protected $table = 'materials'; // اختياري إن كان الاسم مختلفًا عن 'materials'
     protected $fillable = [

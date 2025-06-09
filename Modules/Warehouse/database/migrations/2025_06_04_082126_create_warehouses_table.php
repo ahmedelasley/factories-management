@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('is_default')->default(false);
 
             $table->nullableMorphs('employeeable'); // Employee By
-            
+
             $table->enum(
                 'type',
                 array_column(WarehouseType::cases(), 'value')

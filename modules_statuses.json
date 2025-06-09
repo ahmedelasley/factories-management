@@ -10,5 +10,9 @@
     "Material": true,
     "Product": true,
     "Warehouse": true,
-    "Production": true
+    "Production": true,
+    "HumanResources": true,
+    "Employees": true,
+    "Departments": true,
+    "Positions": true
 }

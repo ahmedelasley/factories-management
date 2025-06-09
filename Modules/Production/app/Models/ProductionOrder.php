@@ -4,12 +4,12 @@ namespace Modules\Production\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Traits\HasCreatorAndEditor;
+use App\Traits\HasUserActions;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductionOrder extends Model
 {
-    use HasFactory, HasCreatorAndEditor;
+    use HasFactory, HasUserActions;
 
     protected $table = 'production_orders';
     protected $fillable = [

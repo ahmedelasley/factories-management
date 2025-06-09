@@ -22,6 +22,7 @@
         <ul class="side-menu">
 
             @include('dashboard::layouts.partials.menu')
+            @include('humanresources::layouts.partials.menu')
             @include('supplier::layouts.partials.menu')
 
             <x-slides.slide-category :value="__(key: 'Warehouses Management')" />

@@ -3,7 +3,7 @@
 namespace Modules\Extra\Models;
 
 use App\Traits\HasHierarchy;
-use App\Traits\HasCreatorAndEditor;
+use App\Traits\HasUserActions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, HasCreatorAndEditor, HasHierarchy;
+    use HasFactory, HasUserActions, HasHierarchy;
 
     protected $table = 'categories';
 
