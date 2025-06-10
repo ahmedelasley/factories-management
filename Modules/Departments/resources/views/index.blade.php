@@ -1,6 +1,12 @@
 
 @extends('layouts.master')
 @section('css')
+    {{-- <link href="{{ URL::asset('assets/back/plugins/fontawesome-free/css/all.min.css') }}" rel="stylesheet"> --}}
+    @if (App::getLocale() == 'ar')
+        <link href="{{URL::asset('assets/back/plugins/treeview/treeview-rtl.css')}}" rel="stylesheet" type="text/css" />
+    @else
+        <link href="{{URL::asset('assets/back/plugins/treeview/treeview.css')}}" rel="stylesheet" type="text/css" />
+    @endif
 
 <style>
 .link-no-color:link {
@@ -39,6 +45,7 @@
 @endsection
 
 @section('js')
+    <script src="{{URL::asset('assets/back/plugins/treeview/treeview.js')}}"></script>
     <script>
         window.addEventListener('create-department-modal', event => {
             $('#createModal').modal('toggle');
